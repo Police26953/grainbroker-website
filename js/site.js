@@ -47,8 +47,8 @@
     // resolved URL avoids browsers dropping the POST body on that redirect.
     var endpoint = cfg.growerFormEndpoint.replace("/serve/", "/v2/serve/");
 
-    fetch(endpoint, { method: "POST", mode: "no-cors", body: data })
-      .then(function () { onDone(true); })
+    fetch(endpoint, { method: "POST", body: data })
+      .then(function (resp) { onDone(resp.ok); })
       .catch(function () { onDone(false); });
   };
 })();
