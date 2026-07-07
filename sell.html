@@ -247,4 +247,36 @@
       (val("ngr") ? "NGR: " + val("ngr") : ""),
       (val("asking") ? "Price expectation: " + val("asking") : ""),
       "Registered via website " + new Date().toLocaleString("en-AU")
-    ].filter(Boole
+    ].filter(Boolean).join("\n");
+
+    var next = document.getElementById("next");
+    next.disabled = true;
+    next.textContent = "Submitting…";
+
+    window.gbSubmitGrower({
+      name: val("name"),
+      email: val("gbemail"),
+      phone: val("phone"),
+      parcelDetails: parcel
+    }, function (ok) {
+      next.disabled = false;
+      if (ok) {
+        document.querySelectorAll(".wstep").forEach(function (el) { el.hidden = true; });
+        document.getElementById("done").hidden = false;
+        document.getElementById("wnav").hidden = true;
+        document.getElementById("progress").hidden = true;
+        window.scrollTo({ top: 0 });
+      } else {
+        next.textContent = "Submit registration";
+        alert("Something went wrong sending your registration — call us on 0414 503 466 or try again.");
+      }
+    });
+  });
+
+  document.getElementById("back").addEventListener("click", function () {
+    if (state.step > 1) { state.step--; render(); window.scrollTo({ top: 0 }); }
+  });
+})();
+</script>
+</body>
+</html>
