@@ -180,4 +180,25 @@
     [a, b].forEach(function (v) { v.onerror = function () { failed = true; a.style.opacity = b.style.opacity = 0; }; });
     a.addEventListener("canplay", function () {
       if (failed) return;
-  
+      a.style.opacity = 1;
+      a.play();
+    }, { once: true });
+    a.addEventListener("ended", function () {
+      if (failed) return;
+      b.currentTime = 0;
+      b.play();
+      b.style.opacity = 1;
+      a.style.opacity = 0;
+    });
+    b.addEventListener("ended", function () {
+      if (failed) return;
+      a.currentTime = 0;
+      a.play();
+      a.style.opacity = 1;
+      b.style.opacity = 0;
+    });
+  }
+})();
+</script>
+</body>
+</html>
