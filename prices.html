@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indicative grain prices. GrainBroker.</title>
+<meta name="description" content="GrainBroker indicative track prices for wheat, barley, canola and sorghum across east coast zones, updated every morning. Call us for a firm bid.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html">Sell grain</a></li>
+        <li><a href="buy.html">Buy grain</a></li>
+        <li><a href="prices.html" aria-current="page">Prices</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="sell.html">Register your grain</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="price-strip" style="min-height:70dvh">
+  <div class="container">
+    <h1 class="section-title">Indicative prices</h1>
+    <p class="section-sub" id="updated-line"></p>
+    <div id="zones"></div>
+    <div style="background:var(--green-deep);color:#fff;border-radius:12px;padding:30px 34px;margin-top:44px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <div>
+        <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:6px">These are our morning markers, not your price.</h2>
+        <p style="color:#C9D8B2;font-size:15px;max-width:36em">Your parcel's value depends on grade, location and who needs it this week. Call the desk for a firm bid.</p>
+      </div>
+      <a class="btn-register" href="tel:1300000000">Call 1300 XXX XXX</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-base" style="border:0;padding:0">
+      <span>&copy; 2026 GrainBroker. www.grainbroker.com.au</span>
+      <span><a href="index.html" style="color:inherit">Home</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/prices.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  document.getElementById("updated-line").textContent =
+    "Updated " + window.GB_PRICES.updated + ". " + window.GB_PRICES.disclaimer;
+  var wrap = document.getElementById("zones");
+  window.GB_PRICES.zones.forEach(function (z) {
+    var h = document.createElement("h2");
+    h.style.cssText = "font-size:1.15rem;font-weight:700;margin:34px 0 14px";
+    h.textContent = z.zone;
+    wrap.appendChild(h);
+    var t = document.createElement("table");
+    t.className = "price-table";
+    t.innerHTML = "<thead><tr><th>Commodity</th><th>Grade</th><th class='num'>$/tonne</th></tr></thead>";
+    var tb = document.createElement("tbody");
+    z.rows.forEach(function (r) {
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + r.commodity + "</td><td>" + r.grade + "</td><td class='num'>$" + r.price + "</td>";
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    wrap.appendChild(t);
+  });
+})();
+</script>
+</body>
+</html>

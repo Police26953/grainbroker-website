@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grain market news. GrainBroker.</title>
+<meta name="description" content="Daily Australian grain news, daily Black Sea updates and a weekly agtech briefing, written by the GrainBroker desk.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html">Sell grain</a></li>
+        <li><a href="buy.html">Buy grain</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="news.html" aria-current="page">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="sell.html">Register your grain</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section style="min-height:70dvh">
+  <div class="container">
+    <h1 class="section-title">Market news</h1>
+    <p class="section-sub">Written by our desk every morning. Australian grain daily, Black Sea daily, agtech weekly.</p>
+    <div class="news-tabs" role="tablist">
+      <button class="news-tab sel" data-feed="all">All</button>
+      <button class="news-tab" data-feed="au">Australian grain</button>
+      <button class="news-tab" data-feed="world">Black Sea and world</button>
+      <button class="news-tab" data-feed="agtech">Agtech briefing</button>
+    </div>
+    <div id="feed"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-base" style="border:0;padding:0">
+      <span>&copy; 2026 GrainBroker. www.grainbroker.com.au</span>
+      <span><a href="index.html" style="color:inherit">Home</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/news.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var labels = { au: "Australian grain", world: "Black Sea and world", agtech: "Agtech briefing" };
+  function render(feed) {
+    var wrap = document.getElementById("feed");
+    wrap.innerHTML = "";
+    window.GB_NEWS.filter(function (n) { return feed === "all" || n.feed === feed; })
+      .forEach(function (n) {
+        var d = document.createElement("div");
+        d.className = "news-item";
+        d.innerHTML = "<p class='meta'>" + labels[n.feed].toUpperCase() + " &middot; " + n.date + "</p>" +
+          "<h3>" + n.title + "</h3><p>" + n.summary + "</p>" +
+          (n.source ? "<p style='font-size:12.5px;color:#999;margin-top:6px'>" + n.source + "</p>" : "");
+        wrap.appendChild(d);
+      });
+  }
+  document.querySelectorAll(".news-tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      document.querySelectorAll(".news-tab").forEach(function (x) { x.classList.remove("sel"); });
+      t.classList.add("sel");
+      render(t.dataset.feed);
+    });
+  });
+  render("all");
+})();
+</script>
+</body>
+</html>

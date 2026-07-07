@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buy grain. GrainBroker.</title>
+<meta name="description" content="Feedlots, millers, exporters and traders: register your requirements and GrainBroker brings you matching parcels, quality verified.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="form-shell">
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html">Sell grain</a></li>
+        <li><a href="buy.html" aria-current="page">Buy grain</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="tel:1300000000">1300 XXX XXX</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <form class="form-card" id="buyform" novalidate>
+    <h1>Tell us what you need</h1>
+    <p class="lede">Register your requirements once. When matching parcels come across our desk, you get the first call, with quality verified before you commit.</p>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="company">Company</label>
+        <input id="company">
+        <p class="err">Enter your company name.</p>
+      </div>
+      <div class="field">
+        <label for="contact">Contact name</label>
+        <input id="contact" autocomplete="name">
+        <p class="err">Who should we ask for?</p>
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" autocomplete="tel">
+        <p class="err">Enter the best number to reach you.</p>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email">
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="field">
+        <label for="commodity">Commodity</label>
+        <select id="commodity">
+          <option>Wheat</option><option>Barley</option><option>Canola</option>
+          <option>Sorghum</option><option>Oats</option><option>Pulses</option><option>Multiple</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="grade">Grade / spec</label>
+        <input id="grade" placeholder="e.g. APW1 or feed spec">
+      </div>
+      <div class="field">
+        <label for="tonnes">Tonnes required</label>
+        <input id="tonnes" type="number" inputmode="numeric" min="1" placeholder="1000">
+        <p class="err">Roughly how many tonnes?</p>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="delivery">Delivery destination</label>
+        <input id="delivery" placeholder="e.g. delivered Tamworth, or track Newcastle">
+      </div>
+      <div class="field">
+        <label for="window">Delivery window</label>
+        <input id="window" placeholder="e.g. August to October 2026">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="notes">Anything else</label>
+      <textarea id="notes" rows="3" placeholder="Ongoing program or one-off, quality requirements, payment terms"></textarea>
+    </div>
+
+    <button type="button" class="btn-register" id="submit" style="width:100%;justify-content:center">Register requirements</button>
+
+    <div class="success-panel" id="done" hidden>
+      <div class="ok">&#10003;</div>
+      <h2 style="font-size:1.4rem;margin-bottom:10px">Requirements registered</h2>
+      <p style="color:var(--grey);max-width:30em;margin:0 auto">A GrainBroker broker will be in touch within 24 hours to confirm your specs. When grain that fits comes across our desk, you get the first call.</p>
+    </div>
+  </form>
+</div>
+
+<script src="js/site.js"></script>
+<script>
+(function () {
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function invalid(id, bad) {
+    var f = document.getElementById(id).closest(".field");
+    f.classList.toggle("invalid", bad);
+    return bad;
+  }
+  document.getElementById("submit").addEventListener("click", function () {
+    var a = invalid("company", !val("company"));
+    var b = invalid("contact", !val("contact"));
+    var c = invalid("phone", val("phone").replace(/\D/g, "").length < 8);
+    var d = invalid("tonnes", !val("tonnes"));
+    if (a || b || c || d) return;
+    var payload = {
+      TYPE: "BUYER REQUIREMENT REGISTRATION",
+      COMPANY: val("company"), CONTACT: val("contact"), PHONE: val("phone"), EMAIL: val("email"),
+      COMMODITY: val("commodity"), GRADE: val("grade"), TONNES: val("tonnes"),
+      DELIVERY: val("delivery"), WINDOW: val("window"), NOTES: val("notes")
+    };
+    window.gbSubmit("Buyer requirement: " + payload.TONNES + "t " + payload.COMMODITY + ", " + payload.COMPANY, payload, function () {
+      document.getElementById("buyform").querySelectorAll(".grid-2,.grid-3,.field,#submit").forEach(function (el) { el.hidden = true; });
+      document.getElementById("done").hidden = false;
+      window.scrollTo({ top: 0 });
+    });
+  });
+})();
+</script>
+</body>
+</html>

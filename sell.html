@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register your grain. GrainBroker.</title>
+<meta name="description" content="Tell us what's in your silos in three minutes. A GrainBroker broker calls you within 24 hours with a plan to sell it.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="form-shell">
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html" aria-current="page">Sell grain</a></li>
+        <li><a href="buy.html">Buy grain</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="tel:1300000000">1300 XXX XXX</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <form class="form-card" id="wiz" novalidate>
+    <h1>Register your grain</h1>
+    <p class="lede">Three minutes, from the ute or the kitchen table. Your details stay private to the GrainBroker team. A broker calls you within 24 hours.</p>
+
+    <div class="wiz-progress" id="progress">
+      <div class="on"><div class="bar"></div><p>1. Grain</p></div>
+      <div><div class="bar"></div><p>2. Quantity</p></div>
+      <div><div class="bar"></div><p>3. Storage</p></div>
+      <div><div class="bar"></div><p>4. Review</p></div>
+    </div>
+
+    <div class="wstep" id="s1">
+      <div class="field">
+        <label>What are you selling?</label>
+        <div class="chips" id="commodity">
+          <button type="button" class="chip sel" data-v="Wheat">Wheat</button>
+          <button type="button" class="chip" data-v="Barley">Barley</button>
+          <button type="button" class="chip" data-v="Canola">Canola</button>
+          <button type="button" class="chip" data-v="Sorghum">Sorghum</button>
+          <button type="button" class="chip" data-v="Oats">Oats</button>
+          <button type="button" class="chip" data-v="Pulses">Pulses</button>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="field">
+          <label for="grade">Grade</label>
+          <select id="grade"></select>
+        </div>
+        <div class="field">
+          <label for="variety">Variety (optional)</label>
+          <input id="variety" placeholder="e.g. Scepter">
+        </div>
+        <div class="field">
+          <label for="season">Season</label>
+          <select id="season"><option>2025/26</option><option>2024/25</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="wstep" id="s2" hidden>
+      <div class="grid-2">
+        <div class="field">
+          <label for="tonnes">Tonnes available</label>
+          <input id="tonnes" type="number" inputmode="numeric" min="1" placeholder="250">
+          <p class="err">Enter how many tonnes you have.</p>
+        </div>
+        <div class="field">
+          <label for="spec1">Protein % (optional)</label>
+          <input id="spec1" placeholder="11.5">
+        </div>
+        <div class="field">
+          <label for="spec2">Moisture % (optional)</label>
+          <input id="spec2" placeholder="12.0">
+        </div>
+        <div class="field">
+          <label for="spec3">Screenings % (optional)</label>
+          <input id="spec3" placeholder="2.8">
+        </div>
+      </div>
+      <p style="font-size:13.5px;color:var(--grey)">Have a lab test certificate? Mention it on the call: parcels with test results attract stronger bids.</p>
+    </div>
+
+    <div class="wstep" id="s3" hidden>
+      <div class="field">
+        <label>Where is it stored?</label>
+        <div class="chips" id="storage">
+          <button type="button" class="chip sel" data-v="On-farm silo"><i>&#127981;</i>On-farm silo</button>
+          <button type="button" class="chip" data-v="Grain bags"><i>&#128230;</i>Grain bags</button>
+          <button type="button" class="chip" data-v="Shed"><i>&#127968;</i>Shed</button>
+          <button type="button" class="chip" data-v="Bulk handler"><i>&#127970;</i>Bulk handler</button>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="town">Nearest town</label>
+          <input id="town" placeholder="e.g. Parkes, NSW">
+          <p class="err">Buyers need a location to work out freight.</p>
+        </div>
+        <div class="field">
+          <label for="postcode">Postcode</label>
+          <input id="postcode" inputmode="numeric" placeholder="2870">
+        </div>
+      </div>
+    </div>
+
+    <div class="wstep" id="s4" hidden>
+      <div class="grid-2">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" autocomplete="name">
+          <p class="err">We need a name for the call.</p>
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" type="tel" autocomplete="tel" placeholder="04XX XXX XXX">
+          <p class="err">Enter the best number to reach you.</p>
+        </div>
+        <div class="field">
+          <label for="gbemail">Email</label>
+          <input id="gbemail" type="email" autocomplete="email" placeholder="you@example.com">
+          <p class="err">Enter your email so we can send the paperwork.</p>
+        </div>
+        <div class="field">
+          <label for="ngr">NGR number (optional)</label>
+          <input id="ngr" placeholder="8 digits">
+        </div>
+        <div class="field">
+          <label for="asking">Price expectation (optional)</label>
+          <input id="asking" placeholder="$/t, or leave blank for our advice">
+        </div>
+      </div>
+      <div class="review-box" id="review"></div>
+      <p style="font-size:13px;color:var(--grey)">By submitting you agree to be contacted by the GrainBroker team about this parcel. Your details are never published or shared outside GrainBroker.</p>
+    </div>
+
+    <div class="wstep success-panel" id="done" hidden>
+      <div class="ok">&#10003;</div>
+      <h2 style="font-size:1.4rem;margin-bottom:10px">Registered. We're on it.</h2>
+      <p style="color:var(--grey);max-width:30em;margin:0 auto">A GrainBroker broker will call you within 24 hours, sooner if the market's moving on your grain. Talk soon.</p>
+    </div>
+
+    <div class="wiz-nav" id="wnav">
+      <button type="button" class="btn-back" id="back" style="visibility:hidden">&larr; Back</button>
+      <button type="button" class="btn-next" id="next">Next &rarr;</button>
+    </div>
+  </form>
+</div>
+
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var GRADES = {
+    Wheat: ["APW1", "H2", "H1", "ASW1", "AUH2", "SFW1", "FED1"],
+    Barley: ["F1", "F2", "F3", "MALT1", "MALT2"],
+    Canola: ["CAN1", "CAN2", "GM CAN1"],
+    Sorghum: ["SOR1", "SOR2"],
+    Oats: ["MILL1", "FEED1"],
+    Pulses: ["Lentils", "Chickpeas", "Faba beans", "Field peas", "Lupins"]
+  };
+  var state = { commodity: "Wheat", storage: "On-farm silo", step: 1 };
+  var steps = ["s1", "s2", "s3", "s4"];
+
+  function fillGrades() {
+    var sel = document.getElementById("grade");
+    sel.innerHTML = "";
+    GRADES[state.commodity].forEach(function (g) {
+      var o = document.createElement("option"); o.textContent = g; sel.appendChild(o);
+    });
+  }
+  fillGrades();
+
+  document.querySelectorAll("#commodity .chip, #storage .chip").forEach(function (c) {
+    c.addEventListener("click", function () {
+      var group = c.parentElement;
+      group.querySelectorAll(".chip").forEach(function (x) { x.classList.remove("sel"); });
+      c.classList.add("sel");
+      if (group.id === "commodity") { state.commodity = c.dataset.v; fillGrades(); }
+      else state.storage = c.dataset.v;
+    });
+  });
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function invalid(id, bad) {
+    var f = document.getElementById(id).closest(".field");
+    f.classList.toggle("invalid", bad);
+    return bad;
+  }
+  function validate(step) {
+    if (step === 2) return !invalid("tonnes", !val("tonnes"));
+    if (step === 3) return !invalid("town", !val("town"));
+    if (step === 4) {
+      var a = invalid("name", !val("name"));
+      var b = invalid("phone", val("phone").replace(/\D/g, "").length < 8);
+      var c = invalid("gbemail", !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val("gbemail")));
+      return !a && !b && !c;
+    }
+    return true;
+  }
+
+  function render() {
+    steps.forEach(function (id, i) {
+      document.getElementById(id).hidden = (i + 1 !== state.step);
+    });
+    var segs = document.querySelectorAll("#progress > div");
+    segs.forEach(function (s, i) { s.classList.toggle("on", i + 1 <= state.step); });
+    document.getElementById("back").style.visibility = state.step === 1 ? "hidden" : "visible";
+    document.getElementById("next").textContent = state.step === 4 ? "Submit registration" : "Next →";
+    if (state.step === 4) {
+      document.getElementById("review").innerHTML =
+        "<b>" + val("tonnes") + "t " + document.getElementById("grade").value + " " + state.commodity + "</b>" +
+        (val("variety") ? " (" + val("variety") + ")" : "") +
+        " &middot; " + document.getElementById("season").value + " season<br>" +
+        (val("spec1") ? "Protein " + val("spec1") + "% &middot; " : "") +
+        (val("spec2") ? "Moisture " + val("spec2") + "% &middot; " : "") +
+        (val("spec3") ? "Screenings " + val("spec3") + "%<br>" : "") +
+        state.storage + ", " + val("town") + " " + val("postcode") +
+        (val("asking") ? "<br>Price expectation: " + val("asking") : "");
+    }
+  }
+
+  document.getElementById("next").addEventListener("click", function () {
+    if (!validate(state.step)) return;
+    if (state.step < 4) { state.step++; render(); window.scrollTo({ top: 0 }); return; }
+    var parcel = [
+      val("tonnes") + "t " + document.getElementById("grade").value + " " + state.commodity +
+        (val("variety") ? " (" + val("variety") + ")" : "") + ", season " + document.getElementById("season").value,
+      (val("spec1") ? "Protein " + val("spec1") + "% " : "") +
+        (val("spec2") ? "Moisture " + val("spec2") + "% " : "") +
+        (val("spec3") ? "Screenings " + val("spec3") + "%" : ""),
+      "Stored: " + state.storage + ", " + val("town") + " " + val("postcode"),
+      (val("ngr") ? "NGR: " + val("ngr") : ""),
+      (val("asking") ? "Price expectation: " + val("asking") : ""),
+      "Registered via website " + new Date().toLocaleString("en-AU")
+    ].filter(Boole

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GrainBroker. The smarter way to trade grain.</title>
+<meta name="description" content="GrainBroker is a relationship grain brokerage for Australia's east coast. Register your grain, our brokers work the buyers, you get the call. Connect. Negotiate. Transact.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html">Sell grain</a></li>
+        <li><a href="buy.html">Buy grain</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="sell.html">Register your grain</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-media" style="background-image:url('assets/hero-night-harvest.png'),radial-gradient(120% 90% at 70% 15%, #2E4210 0%, #1B2A00 60%, #0F1800 100%)"></div>
+  <video id="hero-a" class="hero-media" style="object-fit:cover;width:100%;height:100%;opacity:0;transition:opacity .6s" muted playsinline preload="auto" src="assets/hero-loop-a.mp4"></video>
+  <video id="hero-b" class="hero-media" style="object-fit:cover;width:100%;height:100%;opacity:0" muted playsinline preload="auto" src="assets/hero-loop-b.mp4"></video>
+  <div class="hero-scrim"></div>
+  <div class="container">
+    <div class="hero-inner rise">
+      <h1>The smarter way <span class="accent">to trade grain</span></h1>
+      <p>Register what's in your silos and our brokers go to work: ringing buyers, negotiating your price, handling the deal from paddock to payment.</p>
+      <div class="hero-ctas">
+        <a class="btn-register" href="sell.html">Register your grain</a>
+        <a class="btn-buyer" href="buy.html">Tell us what you need</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Brokers who pick up the phone, not another trading screen</h2>
+    <p class="section-sub">No public listings. No bots matching your grain to a stranger. You tell us what you have, we work our buyer network until it's sold on terms you're happy with.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Register your grain</h3>
+        <p>Three minutes on your phone: what it is, how much, where it's stored. Your details stay private to our team, always.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>We work the market</h3>
+        <p>Our brokers know who's buying before it hits a screen. We call the right buyers, negotiate hard, and bring you real offers.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>You approve the deal</h3>
+        <p>Nothing sells without your say so. Agree the price, we handle contracts and logistics through to payment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="band-grid">
+      <div>
+        <h2>Your grain never sits on a public list</h2>
+        <p>Exchanges post your parcel and wait. We don't. Every registration comes straight to our desk and stays confidential while we shop it to buyers we know and trust.</p>
+        <div class="tick">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="#A5D66A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Wheat, barley, canola, sorghum, oats and pulses across NSW, Victoria and Queensland</span>
+        </div>
+        <div class="tick">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="#A5D66A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>On-farm, grain bags, sheds or warehoused with a bulk handler: we sell it wherever it sits</span>
+        </div>
+        <div class="tick">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="#A5D66A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>You keep title until settlement terms are met. Our team tracks every tonne to payment.</span>
+        </div>
+        <p style="margin-top:26px"><a class="btn-register" href="sell.html">Register your grain</a></p>
+      </div>
+      <img src="assets/harvest-sunset-aerial.png" alt="Harvester cutting a golden wheat paddock at sunset" onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<section class="price-strip">
+  <div class="container">
+    <h2 class="section-title">Today's indicative prices</h2>
+    <p class="section-sub">Updated every morning from the overnight markets and the majors' bid sheets. Indicative only: call us for a firm bid on your parcel.</p>
+    <table class="price-table" id="home-prices" aria-label="Indicative grain prices">
+      <thead><tr><th>Commodity</th><th>Grade</th><th>Zone</th><th class="num">$/tonne</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="price-note" id="price-updated"></p>
+    <p style="margin-top:22px"><a class="btn-call" href="prices.html">See all zones and grades</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="text-align:center;max-width:720px">
+    <h2 class="section-title" style="margin:0 auto 14px">Buying grain?</h2>
+    <p class="section-sub" style="margin:0 auto 30px">Feedlots, millers, exporters and traders: register your requirements and our team brings you parcels that match, with quality verified before you commit.</p>
+    <a class="btn-register" href="buy.html" style="background:var(--green-deep)">Tell us what you need</a>
+  </div>
+</section>
+
+<section class="price-strip" style="padding-top:72px">
+  <div class="container">
+    <h2 class="section-title">Market news, every morning</h2>
+    <p class="section-sub">Australian grain and Black Sea updates daily, agtech briefing weekly. Written by our desk, read in two minutes.</p>
+    <div id="home-news"></div>
+    <p style="margin-top:26px"><a class="btn-call" href="news.html">All news</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="index.html" style="margin-bottom:14px">
+          <img src="assets/grainbroker-icon.png" alt="" style="height:34px">
+          <span style="font-size:18px">Grain<b>Broker</b></span>
+        </a>
+        <p style="max-width:26em">Connect. Negotiate. Transact.<br>A relationship grain brokerage for Australia's east coast.</p>
+      </div>
+      <div>
+        <h4>Growers</h4>
+        <a href="sell.html">Register your grain</a>
+        <a href="prices.html">Indicative prices</a>
+        <a href="news.html">Market news</a>
+      </div>
+      <div>
+        <h4>Buyers</h4>
+        <a href="buy.html">Register requirements</a>
+        <a href="about.html">How we work</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:1300000000">1300 XXX XXX</a>
+        <a href="mailto:info@grainbroker.com.au">info@grainbroker.com.au</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 GrainBroker. All rights reserved. www.grainbroker.com.au</span>
+      <span>Privacy Policy &middot; Terms of Trade</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data/prices.js"></script>
+<script src="data/news.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  // Hero video loop: clip A (journey in) then clip B (cab moment + pull out), forever.
+  // If the video files are missing or motion is reduced, the still image underneath shows instead.
+  var a = document.getElementById("hero-a"), b = document.getElementById("hero-b");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var HERO_SPEED = 0.7; // 1 = natural speed; lower = slower, more cinematic
+  if (a && b && !reduced) {
+    var failed = false;
+    a.playbackRate = HERO_SPEED;
+    b.playbackRate = HERO_SPEED;
+    [a, b].forEach(function (v) { v.onerror = function () { failed = true; a.style.opacity = b.style.opacity = 0; }; });
+    a.addEventListener("canplay", function () {
+      if (failed) return;
+  
