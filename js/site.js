@@ -33,4 +33,22 @@
   // fields: { name, email, phone, parcelDetails }
   window.gbSubmitGrower = function (fields, onDone) {
     var cfg = window.GB_CONFIG;
-    var data = new FormData()
+    if (!cfg.growerFormEndpoint) { onDone(false); return; }
+
+    var data = new FormData();
+    data.append("EMAIL", fields.email || "");
+    data.append("SMS", auPhone(fields.phone));
+    data.append("FIRSTNAME", fields.name || "");
+    data.append("PARCEL_DETAILS", fields.parcelDetails || "");
+    data.append("email_address_check", ""); // honeypot: must stay empty
+    data.append("locale", "en");
+
+    // Brevo's /serve/ endpoint 302s to /v2/serve/; posting straight to the
+    // resolved URL avoids browsers dropping the POST body on that redirect.
+    var endpoint = cfg.growerFormEndpoint.replace("/serve/", "/v2/serve/");
+
+    fetch(endpoint, { method: "POST", mode: "no-cors", body: data })
+      .then(function () { onDone(true); })
+      .catch(function () { onDone(false); });
+  };
+})();
