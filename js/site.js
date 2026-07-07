@@ -16,7 +16,7 @@
     // Buyer form endpoint pending (buyers list form not created yet) — falls back to email.
     buyerFormEndpoint: "",
     fallbackEmail: "info@grainbroker.com.au",
-    phoneDisplay: "1300 XXX XXX"
+    phoneDisplay: "0414 503 466"
   };
 
   // Convert an Australian phone number to Brevo SMS format (61XXXXXXXXX, no +/leading 0).
