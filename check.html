@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today's market check. GrainBroker.</title>
+<meta name="description" content="Quick daily check-in for GrainBroker buyers: tell us what you're after today in 15 seconds.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="form-shell">
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html">Sell grain</a></li>
+        <li><a href="buy.html">Buy grain</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="tel:+61414503466">0414 503 466</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <form class="form-card" id="checkform" novalidate>
+    <h1>What are you after today?</h1>
+    <p class="lede">Tap what you're in the market for and give us the grade and tonnage. Takes 15 seconds — no need to write an email.</p>
+
+    <div class="field">
+      <label>Commodities</label>
+      <div class="chips" id="commodity">
+        <button type="button" class="chip" data-v="Wheat">Wheat</button>
+        <button type="button" class="chip" data-v="Durum">Durum</button>
+        <button type="button" class="chip" data-v="Barley (malt)">Barley (malt)</button>
+        <button type="button" class="chip" data-v="Barley (feed)">Barley (feed)</button>
+        <button type="button" class="chip" data-v="Canola">Canola</button>
+        <button type="button" class="chip" data-v="Corn">Corn</button>
+        <button type="button" class="chip" data-v="Sorghum">Sorghum</button>
+        <button type="button" class="chip" data-v="Chickpeas">Chickpeas</button>
+        <button type="button" class="chip" data-v="Lentils">Lentils</button>
+        <button type="button" class="chip" data-v="Faba beans">Faba beans</button>
+        <button type="button" class="chip" data-v="Oats">Oats</button>
+        <button type="button" class="chip" id="chip-none" data-v="Nothing today">Nothing today</button>
+      </div>
+      <p class="err" id="commodity-err">Pick at least one, or "Nothing today".</p>
+    </div>
+
+    <div class="field" id="details-field">
+      <label for="details">Grade / spec &amp; tonnage</label>
+      <textarea id="details" rows="2" placeholder="e.g. APW1, 500t delivered Newcastle; feed barley 300t"></textarea>
+    </div>
+
+    <div class="field" id="email-field">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+      <p class="err">Enter your email so we know who's asking.</p>
+    </div>
+
+    <button type="button" class="btn-register" id="submit" style="width:100%;justify-content:center">Send today's want</button>
+
+    <div class="success-panel" id="done" hidden>
+      <div class="ok">&#10003;</div>
+      <h2 style="font-size:1.4rem;margin-bottom:10px">Got it, thanks.</h2>
+      <p style="color:var(--grey);max-width:30em;margin:0 auto">If we've got a matching parcel, a GrainBroker broker will be in touch. Talk again tomorrow.</p>
+    </div>
+  </form>
+</div>
+
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var picked = [];
+  var params = new URLSearchParams(window.location.search);
+  var prefillEmail = params.get("email");
+
+  if (prefillEmail) {
+    var emailField = document.getElementById("email-field");
+    document.getElementById("email").value = prefillEmail;
+    emailField.hidden = true;
+  }
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function invalid(id, bad) {
+    var f = document.getElementById(id).closest(".field");
+    f.classList.toggle("invalid", bad);
+    return bad;
+  }
+
+  document.querySelectorAll("#commodity .chip").forEach(function (c) {
+    c.addEventListener("click", function () {
+      if (c.id === "chip-none") {
+        picked = ["Nothing today"];
+        document.querySelectorAll("#commodity .chip").forEach(function (x) { x.classList.toggle("sel", x.id === "chip-none"); });
+        document.getElementById("details-field").hidden = true;
+      } else {
+        document.getElementById("chip-none").classList.remove("sel");
+        picked = picked.filter(function (v) { return v !== "Nothing today"; });
+        var i = picked.indexOf(c.dataset.v);
+        if (i === -1) { picked.push(c.dataset.v); c.classList.add("sel"); }
+        else { picked.splice(i, 1); c.classList.remove("sel"); }
+        document.getElementById("details-field").hidden = false;
+      }
+      document.getElementById("commodity").closest(".field").classList.remove("invalid");
+    });
+  });
+
+  document.getElementById("submit").addEventListener("click", function () {
+    var noCommodity = invalid("commodity", picked.length === 0);
+    document.getElementById("commodity-err").style.display = noCommodity ? "block" : "none";
+    var badEmail = invalid("email", !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val("email")));
+    if (noCommodity || badEmail) return;
+
+    var demand = picked[0] === "Nothing today"
+      ? "Nothing today (" + new Date().toLocaleDateString("en-AU") + ")"
+      : picked.join(", ") + (val("details") ? " — " + val("details") : "") + " [" + new Date().toLocaleDateString("en-AU") + "]";
+
+    var btn = document.getElementById("submit");
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    window.gbSubmitBuyerCheck({
+      email: val("email"),
+      demand: demand
+    }, function (ok) {
+      btn.disabled = false;
+      if (ok) {
+        document.getElementById("checkform").querySelectorAll(".field,#submit").forEach(function (el) { el.hidden = true; });
+        document.getElementById("done").hidden = false;
+        window.scrollTo({ top: 0 });
+      } else {
+        btn.textContent = "Send today's want";
+        alert("Something went wrong sending that — call us on 0414 503 466 or try again.");
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

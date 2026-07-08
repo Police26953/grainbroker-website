@@ -15,6 +15,10 @@
     growerFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAMfu_AcTTe7m14k051CEuPO2NEdtOU5ClzRMZhbtZTtChqxlbCjTtgoIvv2r5KxUKCafKCDq_ndI9zOSpHHIZubMceSsaurG1SmXkkNUdQygbD_IJpuGwGddw38keZ_0RGLdjacFA8VSIzI-yZm9ytJdRlxzJuFCCIHQPxmbZQDdzyPmePPwXaiGOM9Ffx6q34pbmFSpvvJOYg==",
     // Buyer form endpoint pending (buyers list form not created yet) — falls back to email.
     buyerFormEndpoint: "",
+    // Daily buyer market-check endpoint. Pending: Jack needs to create a Brevo subscription
+    // form on list #3 "Grain Broker - Buyers" (update existing contacts, fields EMAIL +
+    // custom attribute BUYER_DEMAND) and paste the resulting sibforms serve URL in here.
+    buyerCheckFormEndpoint: "",
     fallbackEmail: "info@grainbroker.com.au",
     phoneDisplay: "0414 503 466"
   };
@@ -46,6 +50,26 @@
     // Brevo's /serve/ endpoint 302s to /v2/serve/; posting straight to the
     // resolved URL avoids browsers dropping the POST body on that redirect.
     var endpoint = cfg.growerFormEndpoint.replace("/serve/", "/v2/serve/");
+
+    fetch(endpoint, { method: "POST", body: data })
+      .then(function (resp) { onDone(resp.ok); })
+      .catch(function () { onDone(false); });
+  };
+
+  // Submit a daily buyer market-check response to Brevo: updates the existing buyer
+  // contact's BUYER_DEMAND attribute. Does not create new contacts — buyer must already
+  // be on the Buyers list. fields: { email, demand }
+  window.gbSubmitBuyerCheck = function (fields, onDone) {
+    var cfg = window.GB_CONFIG;
+    if (!cfg.buyerCheckFormEndpoint) { onDone(false); return; }
+
+    var data = new FormData();
+    data.append("EMAIL", fields.email || "");
+    data.append("BUYER_DEMAND", fields.demand || "");
+    data.append("email_address_check", ""); // honeypot: must stay empty
+    data.append("locale", "en");
+
+    var endpoint = cfg.buyerCheckFormEndpoint.replace("/serve/", "/v2/serve/");
 
     fetch(endpoint, { method: "POST", body: data })
       .then(function (resp) { onDone(resp.ok); })
