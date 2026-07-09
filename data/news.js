@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "10 July 2026",
+    title: "Canola holds gains as barley export pace stays China-driven",
+    summary: "Canola values have recovered after the recent pullback, tracking alongside firmer offshore oilseed prices, with WA canola near $805/t (new crop $845) and east coast values around $755/t (new crop $798). Barley remains generally softer on price but export volumes are holding up, with China still taking roughly 80% of Australian barley shipments and limited competition until Northern Hemisphere new crop lands.",
+    source: "GrainBroker desk, via Grain Central Daily Market Wire"
+  },
+  {
+    feed: "au", date: "10 July 2026",
+    title: "East–west wheat spread persists as wet conditions spread through the south",
+    summary: "WA wheat continues to trade a premium to the east coast, with FIS Albany bids near $347/t against $324–$345/t track Geelong. Much of SA and Victoria is now bordering on too wet, while drier pockets of southern NSW — including the Griffith–Rankins Springs region — picked up 30–50mm of useful rain. Offshore futures have found fresh weather risk, but local values aren't chasing the move while the Australian crop keeps improving.",
+    source: "GrainBroker desk, via Grain Central Daily Market Wire"
+  },
+  {
+    feed: "world", date: "10 July 2026",
+    title: "Chicago wheat pushes to fresh highs on tight US stocks",
+    summary: "Chicago wheat futures rose again on 9 July to around US$611.50/bu, the highest level since June, extending a rally built on USDA's below-forecast stocks and acreage estimates. The move keeps global wheat benchmarks elevated even as northern hemisphere harvest progresses, with the market still digesting how much of the tightness is already priced in.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "10 July 2026",
+    title: "Cheap Russian wheat keeps a lid on the Black Sea market",
+    summary: "Ukrainian new-harvest food wheat (11.5–12.5% protein) is being offered around US$227–231/t FOB Black Sea ports, but Russian origin has undercut it to become the cheapest wheat on the world market. With Chicago futures pushing higher, desks expect buyers to keep rotating toward Black Sea supply, which should continue to cap how far the broader wheat rally can run.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "9 July 2026",
     title: "New-crop canola runs hot as barley edges toward export parity",
     summary: "New-crop canola bids were tracking around $835/t FIS through early July, with growers and desks alike flagging it as the standout cash crop of the coming harvest on the back of strong demand. Barley is quietly firming alongside it — WA bids sat near $325–$335 FIS Albany and east coast values $308–$310 track Geelong, with values now sniffing around export parity in some regions.",
