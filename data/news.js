@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "11 July 2026",
+    title: "New-crop canola pushes to fresh 2026/27 highs at Albany",
+    summary: "New-crop canola bids at FIS Albany extended their run to fresh 2026/27 highs, tracking above $850/t with GM canola also firming. Wheat held around $353/t and barley near $330/t at the same port zone. Wheat itself found support into the latest WASDE report on classic pre-report short covering across the Chicago, Kansas and Minneapolis contracts, though local values aren't chasing the offshore move.",
+    source: "GrainBroker desk, via Grain Central Daily Market Wire"
+  },
+  {
+    feed: "au", date: "11 July 2026",
+    title: "Grower selling stays thin as market digests last season's carry-out",
+    summary: "Domestic values have softened a little in the north and firmed in the south, with subdued consumer demand and limited interest in wheat for export keeping the tone mixed. Grower selling remains thin as the market works through carry-out from last year's harvest, while brightening prospects for the new crop are helping cap any sharp upside in local bids.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "11 July 2026",
+    title: "Ukraine's 2026 harvest opens strongly, easing near-term Black Sea supply fears",
+    summary: "Ukraine's new-season grain harvest is off to an unusually strong start, with the first million tonnes cut from just 3% of area and wheat yields running around 4.13t/ha, well ahead of early expectations in several western regions. The strong opening contrasts with weather stress in parts of Western Europe and is putting mild downward pressure on regional wheat prices as the Black Sea reasserts itself as a balancing origin for Mediterranean, Middle Eastern and EU buyers.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "11 July 2026",
+    title: "Middle East tension adds a risk premium as US export demand softens",
+    summary: "Geopolitical tension around the Strait of Hormuz following recent US military strikes on Iran is keeping a supply-risk premium in freight and insurance costs across Black Sea and Middle East shipping routes, lending some support to global wheat benchmarks. That's offsetting softer underlying demand: USDA export sales for the week to 2 July totalled 313,103 tonnes of 2026/27 wheat, down almost 46% on the same week last year, with South Korea the largest buyer at 101,000 tonnes.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "10 July 2026",
     title: "Canola holds gains as barley export pace stays China-driven",
     summary: "Canola values have recovered after the recent pullback, tracking alongside firmer offshore oilseed prices, with WA canola near $805/t (new crop $845) and east coast values around $755/t (new crop $798). Barley remains generally softer on price but export volumes are holding up, with China still taking roughly 80% of Australian barley shipments and limited competition until Northern Hemisphere new crop lands.",
