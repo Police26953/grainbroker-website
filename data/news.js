@@ -2,6 +2,36 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "13 July 2026",
+    title: "Global wheat rally passes over local values as season outlook firms",
+    summary: "World wheat benchmarks have surged as much as 5% in early July, but Australian wheat and barley bids have barely moved, with old and new crop wheat still parked around $350/t (higher near $380/t on the Darling Downs where domestic demand is strong). A firmer Australian dollar, ample old-crop carry-out and a much better than feared start to the season are all working against local values chasing the offshore move, even as canola continues to run at $800-850/t across most port zones.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "au", date: "13 July 2026",
+    title: "Pulse exports firm as growers watch for drier weather in the south",
+    summary: "ABS trade data shows Australia exported 27,260 tonnes of chickpeas and 198,368 tonnes of lentils in May, underlining pulses' growing share of the export mix alongside grain. On-farm, growers across SA and Victoria are hoping for a dry stretch over the coming weeks after recent falls tipped some paddocks from useful to waterlogged, with lentils the most exposed crop to further wet weather.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "13 July 2026",
+    title: "Tight US stocks keep Chicago wheat elevated near 632c/bu",
+    summary: "Chicago wheat touched 632c/bushel on 10 July, up over 3% on the day, as the market continues to digest USDA's below-forecast June 1 stocks estimate of 920 million bushels and a reduced 42.74 million acre wheat planting figure. Export demand is adding support too, with a private sale of 100,000 tonnes of US hard red spring wheat to Nigeria for the 2026/27 marketing year reported this week.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "13 July 2026",
+    title: "Russia, Ukraine both tipped for bigger 2025-26 wheat crops",
+    summary: "Trade estimates now put Russia's 2025-26 wheat crop at around 87.5 million tonnes, with Ukraine's winter wheat also tracking toward a larger harvest near 22.1 million tonnes on generally good crop condition. Bigger Black Sea supply continues to be the counterweight to the recent Chicago-led rally, with buyers able to rotate toward cheaper Russian and Ukrainian origin as northern hemisphere harvest progresses.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "agtech", date: "13 July 2026",
+    title: "Weekly agtech briefing: traceability and precision ag move from pilot to scale",
+    summary: "Grain value chains are leaning further into blockchain-based traceability this year, with platforms tracking individual batches from paddock to port to meet rising certification and compliance demands. Alongside that, 2026 is shaping up as the year several precision ag tools - satellite remote sensing, drone imagery, AI-driven analytics and variable rate equipment - move out of pilot programs and into everyday use on farm.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "12 July 2026",
     title: "Chickpea bids strengthen as wheat and barley track sideways",
     summary: "Wheat and barley bids have held close to recent ranges, with WA wheat near $331-$348 and barley $326-$331 FIS Albany, and east coast wheat $324-$345 and barley $309-$313 track Geelong. Away from the major grains, brokers report a pickup in chickpea interest over the past fortnight, with bids rising to around $650/tonne Goondiwindi, equivalent to roughly $680-$690/tonne port.",
@@ -96,30 +126,6 @@ window.GB_NEWS = [
     title: "Russian wheat undercuts Ukraine as Black Sea competition intensifies",
     summary: "New-harvest Ukrainian food wheat (11.5-12.5% protein) is being offered around US$227-231/t FOB Black Sea, but Russian exporters are cutting prices further and are now the cheapest origin on the world market. With US wheat pushing higher, desks expect demand to keep rotating toward cheaper Black Sea supply, keeping a lid on how far the broader rally can run.",
     source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "8 July 2026",
-    title: "Rain fills gaps through southern NSW as harvest zones digest falls",
-    summary: "Solid falls across the east coast over the past 48 hours, with the Griffith-Rankins Springs region picking up 30-50mm in drier pockets that needed it most. Parts of SA and Victoria are now bordering on too wet. Track bids softened slightly in response: east coast wheat sat around $324-$345 and barley $309-$313 track Geelong, while WA wheat held near $331-$348 FIS Albany.",
-    source: "GrainBroker desk, via Grain Central / Lachstock Daily Market Wire"
-  },
-  {
-    feed: "au", date: "8 July 2026",
-    title: "South Korea splits wheat tender between Australian and US origin",
-    summary: "A recent South Korean feed wheat tender was split between Australian and US supply, purchased around US$265/t CNF. Working back through freight, that prices NSW wheat near A$335/t port track or WA wheat near A$358/t FIS, a reminder that Asian demand is still willing to pay up for Australian origin over Northern Hemisphere alternatives.",
-    source: "GrainBroker desk, via Grain Central / Farm Weekly"
-  },
-  {
-    feed: "world", date: "8 July 2026",
-    title: "Chicago wheat clears US$6/bu as US balance sheet keeps shrinking",
-    summary: "Chicago September wheat pushed through US$6/bu, up around 2%, after USDA cut a further 900,000 acres from the winter wheat estimate. HRW carry-in has fallen to under 300 million bushels versus 450 a year ago, and SRW carryout is pinned under 100 million bushels. Desks note the move still lacks a fresh catalyst beyond what's already known, with strong yield potential in the forecast working against further gains.",
-    source: "GrainBroker desk, via Grain Central / Lachstock Daily Market Wire"
-  },
-  {
-    feed: "world", date: "8 July 2026",
-    title: "Ukraine's June grain and oilseed exports ease to 3.76Mt",
-    summary: "Ukraine's grain and oilseed exports slipped to 3.76 million tonnes in June, down from 4.0Mt in May. Kyiv has confirmed no export limits for the current season, with full-year wheat exports still projected near 17Mt off a harvest of about 23Mt, supply that continues to cap upside for competing origins including Australia.",
-    source: "GrainBroker desk, via Grain Central / Lachstock Daily Market Wire"
   },
   {
     feed: "agtech", date: "Week of 29 June 2026",
