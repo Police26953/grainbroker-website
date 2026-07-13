@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "14 July 2026",
+    title: "Plum Grove locks in three-year, 600,000t Geraldton export deal",
+    summary: "Plum Grove Logistics has signed a three-year agreement with Mid West Ports to export 600,000 tonnes of grain a year through Geraldton, adding a further outlet for WA growers alongside the major bulk handlers. Separately, the Department of Agriculture has opened public consultation on an updated Wheat Port Code covering access to port terminals for bulk wheat exports, running through to the end of July, with the stated aim of simplifying port operations and lowering logistics costs for exporters.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "au", date: "14 July 2026",
+    title: "New-crop canola keeps climbing at Albany, wheat and barley steady",
+    summary: "New-crop bids at FIS Albany were quoted at $853/t for canola and $810/t for GM canola, with wheat holding around $354/t and barley near $329/t. Canola and barley continue to lead the selling queue into harvest, with bulk handlers keen to move both crops early to free up supply-chain capacity ahead of the bigger wheat program later in the season.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "14 July 2026",
+    title: "Chicago wheat eases back after Friday's Azov-driven spike",
+    summary: "Chicago wheat slipped to 630.03c/bushel on 13 July, down slightly on the day but still up close to 7% over the past month. The pullback follows a sharp Friday rally in which Euronext milling wheat jumped 5.5% to a seven-week high on trader talk of a possible Russian closure of the Sea of Azov to shipping, after Ukraine struck a number of Russian tankers in the area.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "14 July 2026",
+    title: "Russia's crop outlook softens as diesel and logistics costs bite",
+    summary: "Trade estimates have Russia's 2025/26 wheat crop at 85.5-87.0 million tonnes as the country heads into the new season facing diesel supply delays and higher input costs. Analysts note the added friction may open the door for Romania, Bulgaria and Ukraine to pick up share as more reliable Black Sea suppliers, even as Ukraine's own winter wheat crop is tracking toward a larger harvest near 22.1 million tonnes on generally good crop condition.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "13 July 2026",
     title: "Global wheat rally passes over local values as season outlook firms",
     summary: "World wheat benchmarks have surged as much as 5% in early July, but Australian wheat and barley bids have barely moved, with old and new crop wheat still parked around $350/t (higher near $380/t on the Darling Downs where domestic demand is strong). A firmer Australian dollar, ample old-crop carry-out and a much better than feared start to the season are all working against local values chasing the offshore move, even as canola continues to run at $800-850/t across most port zones.",
@@ -101,30 +125,6 @@ window.GB_NEWS = [
     feed: "world", date: "10 July 2026",
     title: "Cheap Russian wheat keeps a lid on the Black Sea market",
     summary: "Ukrainian new-harvest food wheat (11.5-12.5% protein) is being offered around US$227-231/t FOB Black Sea ports, but Russian origin has undercut it to become the cheapest wheat on the world market. With Chicago futures pushing higher, desks expect buyers to keep rotating toward Black Sea supply, which should continue to cap how far the broader wheat rally can run.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "9 July 2026",
-    title: "New-crop canola runs hot as barley edges toward export parity",
-    summary: "New-crop canola bids were tracking around $835/t FIS through early July, with growers and desks alike flagging it as the standout cash crop of the coming harvest on the back of strong demand. Barley is quietly firming alongside it, with WA bids near $325-$335 FIS Albany and east coast values $308-$310 track Geelong, with values now sniffing around export parity in some regions.",
-    source: "GrainBroker desk, via Grain Central Daily Market Wire"
-  },
-  {
-    feed: "au", date: "9 July 2026",
-    title: "East-west wheat spread holds as WA trades a premium to the east coast",
-    summary: "Wheat track bids remain split along the usual east-west lines: WA wheat near $347/t FIS Albany against east coast values of $324-$345/t track Geelong. The gap reflects continued strong export pull through WA ports versus a domestically-focused east coast market still working through carry-out from last season.",
-    source: "GrainBroker desk, via Grain Central Daily Market Wire"
-  },
-  {
-    feed: "world", date: "9 July 2026",
-    title: "US wheat stocks and acreage miss lift Chicago futures near $5.90/bu",
-    summary: "Chicago wheat futures pushed toward $5.90/bu in early July after USDA's June 1 stocks estimate of 920 million bushels came in below expectations and the annual acreage report put US wheat plantings at 42.74 million acres, also undershooting forecasts. The global wheat benchmark has now climbed to around US$612/bu, up roughly 4.5% over the past month and nearly 12% higher than a year ago.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "9 July 2026",
-    title: "Russian wheat undercuts Ukraine as Black Sea competition intensifies",
-    summary: "New-harvest Ukrainian food wheat (11.5-12.5% protein) is being offered around US$227-231/t FOB Black Sea, but Russian exporters are cutting prices further and are now the cheapest origin on the world market. With US wheat pushing higher, desks expect demand to keep rotating toward cheaper Black Sea supply, keeping a lid on how far the broader rally can run.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
