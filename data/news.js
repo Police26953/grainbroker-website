@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "18 July 2026",
+    title: "WA wheat crop downgrade adds to supply-side support",
+    summary: "A Grain Industry Association of Western Australia projection has the state's 2026 wheat harvest at around 9.5 million tonnes, down close to 30% on the 13.3 million tonnes cut in 2025, as a hotter and drier run through the season pares back earlier expectations. As one of the larger suppliers of wheat into Southeast Asia, the Middle East and China, a smaller WA crop feeds into the supply-side story behind the current global rally. Locally, ample old-crop carry-out and a firmer Australian dollar are still tempering how far domestic bids chase the offshore move.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "au", date: "18 July 2026",
+    title: "New-crop barley and canola hold firm, sorghum lags feed wheat",
+    summary: "New-crop values are holding across the eastern states, with new-crop barley trading around $275 a tonne on farm and canola bids at many sites still north of $800/t, decile eight to nine territory and up $20-$25 on earlier levels. Barley export demand stays strong, with China taking roughly 80% of trade and limited competition until northern hemisphere new crop arrives. In the north, Central Queensland is set to harvest an estimated 350,000 to 400,000 tonnes of sorghum, though ex-farm sorghum near $310-$320/t is struggling to compete with local feedlot wheat bids around $380/t.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "18 July 2026",
+    title: "Chicago wheat eases from two-year high as traders bank profits",
+    summary: "Chicago wheat settled around 675 US cents a bushel on 17 July, easing back from the two-year high near 695c reached on 15 July as traders booked profits after a sharp run-up. Prices remain elevated, up more than 11% over the past month, with the Russia-Ukraine conflict showing no sign of easing and Russian forces resuming strikes on Ukrainian Black Sea port infrastructure. The market is weighing that war-risk premium against the prospect of competitive Russian offers as northern hemisphere harvest advances.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "18 July 2026",
+    title: "Russian harvest delay and Ukrainian port losses tighten Black Sea supply",
+    summary: "Analysts have Russia's wheat harvest running seven to 14 days behind last year on later planting and diesel supply shortages, and have trimmed July export forecasts, keeping a floor under the market. On the Ukrainian side, roughly a third of grain export capacity through Black Sea ports has been lost to intensified Russian attacks, with three Odesa terminals that account for more than 90% of the country's grain and vegetable oil shipments the focus of recent strikes. The combination is tightening near-term Black Sea availability even as both countries head toward workable new-season crops.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "17 July 2026",
     title: "Black Sea disruption lifts local wheat bids as Asian buyers step in",
     summary: "Australian wheat and barley bids firmed this week as Asian demand shifted toward local origin in response to the squeeze on Russian shipments out of the Sea of Azov. Bulk handler wheat bids in northern New South Wales are reported up around $20 a tonne over the past ten days as exporters chase accumulation, with Australian wheat export values broadly $10-$15/t stronger. The move is being led by the offshore market rather than any change in the local balance sheet, where a much-improved season and ample old-crop carry-out remain a brake on how far domestic values follow.",
@@ -101,30 +125,6 @@ window.GB_NEWS = [
     feed: "world", date: "12 July 2026",
     title: "Black Sea freight market stalls as Ukraine's 2026 output outlook firms",
     summary: "Trade estimates now put Ukraine's total 2026 grain and oilseed output in the low-80 million tonne range, supporting robust export potential for 2026/27 provided Black Sea and Danube logistics hold up. Freight activity has cooled in the meantime, with a Ukrainian broker reporting a quiet week for new cargo offers and rates for moving 5,000-6,000 tonnes of wheat from Odesa to Lebanon or Mersin slipping to around US$27/tonne.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "11 July 2026",
-    title: "New-crop canola pushes to fresh 2026/27 highs at Albany",
-    summary: "New-crop canola bids at FIS Albany extended their run to fresh 2026/27 highs, tracking above $850/t with GM canola also firming. Wheat held around $353/t and barley near $330/t at the same port zone. Wheat itself found support into the latest WASDE report on classic pre-report short covering across the Chicago, Kansas and Minneapolis contracts, though local values aren't chasing the offshore move.",
-    source: "GrainBroker desk, via Grain Central Daily Market Wire"
-  },
-  {
-    feed: "au", date: "11 July 2026",
-    title: "Grower selling stays thin as market digests last season's carry-out",
-    summary: "Domestic values have softened a little in the north and firmed in the south, with subdued consumer demand and limited interest in wheat for export keeping the tone mixed. Grower selling remains thin as the market works through carry-out from last year's harvest, while brightening prospects for the new crop are helping cap any sharp upside in local bids.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "11 July 2026",
-    title: "Ukraine's 2026 harvest opens strongly, easing near-term Black Sea supply fears",
-    summary: "Ukraine's new-season grain harvest is off to an unusually strong start, with the first million tonnes cut from just 3% of area and wheat yields running around 4.13t/ha, well ahead of early expectations in several western regions. The strong opening contrasts with weather stress in parts of Western Europe and is putting mild downward pressure on regional wheat prices as the Black Sea reasserts itself as a balancing origin for Mediterranean, Middle Eastern and EU buyers.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "11 July 2026",
-    title: "Middle East tension adds a risk premium as US export demand softens",
-    summary: "Geopolitical tension around the Strait of Hormuz following recent US military strikes on Iran is keeping a supply-risk premium in freight and insurance costs across Black Sea and Middle East shipping routes, lending some support to global wheat benchmarks. That's offsetting softer underlying demand: USDA export sales for the week to 2 July totalled 313,103 tonnes of 2026/27 wheat, down almost 46% on the same week last year, with South Korea the largest buyer at 101,000 tonnes.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
