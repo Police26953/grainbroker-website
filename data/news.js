@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "17 July 2026",
+    title: "Black Sea disruption lifts local wheat bids as Asian buyers step in",
+    summary: "Australian wheat and barley bids firmed this week as Asian demand shifted toward local origin in response to the squeeze on Russian shipments out of the Sea of Azov. Bulk handler wheat bids in northern New South Wales are reported up around $20 a tonne over the past ten days as exporters chase accumulation, with Australian wheat export values broadly $10-$15/t stronger. The move is being led by the offshore market rather than any change in the local balance sheet, where a much-improved season and ample old-crop carry-out remain a brake on how far domestic values follow.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "au", date: "17 July 2026",
+    title: "Barley and canola export pace stays strong on record WA crops",
+    summary: "Australian barley continues to ship at a fast clip, with China still taking the bulk of trade and limited competition until northern hemisphere new crop arrives. Western Australia's barley harvest is estimated at a record 7.2 million tonnes and canola near 4.3 million tonnes, the second-highest on record, keeping both crops at the front of the selling queue into harvest. Canola values have steadied alongside crude oil and remain underpinned by global biofuel demand, though recent rain has tipped some SA and Victorian paddocks from useful to too wet, leaving growers watching for a drier stretch.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "17 July 2026",
+    title: "World wheat hits two-year high as Black Sea tensions escalate",
+    summary: "Chicago wheat pushed to around 683 US cents a bushel on 16 July, the highest level since May 2024, as renewed Ukrainian strikes on Russian port infrastructure raised fresh concern over Black Sea export flows. Russia has restricted shipping through the Sea of Azov, a route handling roughly a quarter of its grain exports, and analysts have trimmed Russia's July wheat export forecasts by 13-20%. On CBOT, September soft red winter wheat jumped around 5% in a single session, dragging corn and soybeans higher with it.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "17 July 2026",
+    title: "Russia holds export duty at zero even as futures rally",
+    summary: "Russia's Ministry of Agriculture set the wheat export duty at zero for 15-21 July, down from 370.1 roubles a tonne the previous week, after the indicative export price of Russian wheat eased to US$232.3/t from US$239.4/t. The cut points to competitive Russian offers continuing to cap the broader rally even as Chicago and Euronext futures run higher on Black Sea risk. Global wheat consumption is still tracking above production near 824.5 million tonnes for the season, keeping stocks tight and buyers watchful.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "14 July 2026",
     title: "Plum Grove locks in three-year, 600,000t Geraldton export deal",
     summary: "Plum Grove Logistics has signed a three-year agreement with Mid West Ports to export 600,000 tonnes of grain a year through Geraldton, adding a further outlet for WA growers alongside the major bulk handlers. Separately, the Department of Agriculture has opened public consultation on an updated Wheat Port Code covering access to port terminals for bulk wheat exports, running through to the end of July, with the stated aim of simplifying port operations and lowering logistics costs for exporters.",
@@ -101,30 +125,6 @@ window.GB_NEWS = [
     feed: "world", date: "11 July 2026",
     title: "Middle East tension adds a risk premium as US export demand softens",
     summary: "Geopolitical tension around the Strait of Hormuz following recent US military strikes on Iran is keeping a supply-risk premium in freight and insurance costs across Black Sea and Middle East shipping routes, lending some support to global wheat benchmarks. That's offsetting softer underlying demand: USDA export sales for the week to 2 July totalled 313,103 tonnes of 2026/27 wheat, down almost 46% on the same week last year, with South Korea the largest buyer at 101,000 tonnes.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "10 July 2026",
-    title: "Canola holds gains as barley export pace stays China-driven",
-    summary: "Canola values have recovered after the recent pullback, tracking alongside firmer offshore oilseed prices, with WA canola near $805/t (new crop $845) and east coast values around $755/t (new crop $798). Barley remains generally softer on price but export volumes are holding up, with China still taking roughly 80% of Australian barley shipments and limited competition until Northern Hemisphere new crop lands.",
-    source: "GrainBroker desk, via Grain Central Daily Market Wire"
-  },
-  {
-    feed: "au", date: "10 July 2026",
-    title: "East-west wheat spread persists as wet conditions spread through the south",
-    summary: "WA wheat continues to trade a premium to the east coast, with FIS Albany bids near $347/t against $324-$345/t track Geelong. Much of SA and Victoria is now bordering on too wet, while drier pockets of southern NSW, including the Griffith-Rankins Springs region, picked up 30-50mm of useful rain. Offshore futures have found fresh weather risk, but local values aren't chasing the move while the Australian crop keeps improving.",
-    source: "GrainBroker desk, via Grain Central Daily Market Wire"
-  },
-  {
-    feed: "world", date: "10 July 2026",
-    title: "Chicago wheat pushes to fresh highs on tight US stocks",
-    summary: "Chicago wheat futures rose again on 9 July to around US$611.50/bu, the highest level since June, extending a rally built on USDA's below-forecast stocks and acreage estimates. The move keeps global wheat benchmarks elevated even as northern hemisphere harvest progresses, with the market still digesting how much of the tightness is already priced in.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "10 July 2026",
-    title: "Cheap Russian wheat keeps a lid on the Black Sea market",
-    summary: "Ukrainian new-harvest food wheat (11.5-12.5% protein) is being offered around US$227-231/t FOB Black Sea ports, but Russian origin has undercut it to become the cheapest wheat on the world market. With Chicago futures pushing higher, desks expect buyers to keep rotating toward Black Sea supply, which should continue to cap how far the broader wheat rally can run.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
