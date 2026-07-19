@@ -2,6 +2,36 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "20 July 2026",
+    title: "GIWA cuts WA wheat harvest forecast to 9.5Mt on a hot, dry finish to the growing season",
+    summary: "The Grain Industry Association of Western Australia has the state's 2026 wheat harvest at 9.5 million tonnes, down close to 30 percent on the 13.3 million tonnes taken off in 2025. Hotter and drier conditions through the season are behind the cut. WA is Australia's largest wheat exporting state, so a downgrade of that size tightens the national export program rather than just the state one, and it is a large part of why WA port zone values have held a premium over eastern equivalents. Growers still holding unpriced new crop have more leverage than they did a month ago, but the same conditions that lifted the price are the ones cutting the tonnes.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "au", date: "20 July 2026",
+    title: "Old-crop barley and sorghum hold firm on the Downs while new-crop barley sits well behind",
+    summary: "Old-crop barley has been quoted around $380 to $385, with new crop closer to $375 for January onward delivery. Sorghum old crop has been trading at $345 to $350 Downs. The gap between old and new crop barley is the number worth watching for anyone sitting on stored grain, because it is the market paying for tonnes now rather than tonnes later. In the west, new-crop barley bids in the Albany port zone have been running in the $328 to $330 FIS range through mid-July, so the eastern old-crop premium is doing most of the work at the moment.",
+    source: "via Grain Central"
+  },
+  {
+    feed: "world", date: "20 July 2026",
+    title: "Chicago wheat runs to a two-year high as Black Sea strikes escalate",
+    summary: "Chicago wheat closed at 682.75 US cents a bushel on 17 July, up 1.19 percent on the session and roughly 12.7 percent over the month, putting the contract about 25 percent above the same time last year and at its highest level since May 2024. The move came on escalating Ukrainian and Russian strikes around the Black Sea and the risk that a corridor carrying a large share of world wheat gets disrupted. A rally built on war risk rather than a supply shortfall can unwind quickly if the shooting stops, which is worth factoring in before treating current values as a new floor.",
+    source: "via Trading Economics"
+  },
+  {
+    feed: "world", date: "20 July 2026",
+    title: "Analysts cut Russian July wheat export forecasts by up to 20 percent",
+    summary: "IKAR now expects Russian wheat exports below 2 million tonnes for July, down from an earlier 2.5 million tonne estimate, with SovEcon also cutting to around 2 million tonnes. The Russian wheat harvest is running roughly a week to a fortnight behind last year on later planting and diesel supply problems, slowing the pace of grain reaching port. Shipping companies have been restricting movements through the Azov-Don Canal since 10 July on attack risk, and around a quarter of Russian grain and sunflower oil exports normally move through the shallow Azov ports. Less Russian wheat on the water in the near term is supportive for Australian sellers into Asian and Middle Eastern destinations.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "agtech", date: "20 July 2026",
+    title: "Weekly agtech briefing: the sector stops chasing launches and starts looking like an industry",
+    summary: "Reporting through July has been less about a single headline product and more about a market structure that is finally mature enough to map. Farm management systems that turn scattered field, weather and input data into daily decisions are the fastest growing segment, with forecasts around a 17 percent compound annual growth rate to the end of the decade, while satellite and remote sensing sits closer to 7 percent. The nearer-term item for grain traders is imaging: daily field scans with AI-driven multispectral analysis are moving toward commercial availability for agronomists and commodity traders, not just researchers. Better crop reads earlier in the season change who has an information edge going into a marketing decision.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "19 July 2026",
     title: "ABARES has 2026-27 wheat crop at 26.7Mt as planted area falls to a six-year low",
     summary: "ABARES has Australian wheat production for 2026-27 at 26.7 million tonnes, down from around 36 million tonnes the season prior, with wheat area at 10.9 million hectares. That is a 12% reduction and the smallest wheat plant since 2019-20. Higher fuel and fertiliser costs, along with unfavourable prices at planting, pushed growers toward barley, canola, oats and pulses. The Bureau of Meteorology outlook underpinning the forecast carries a 60% to 80% chance of below-average winter rainfall across many cropping regions, and the open question for final yields is how much urea growers are prepared to buy at current prices for July and August top-dressing.",
@@ -98,39 +128,9 @@ window.GB_NEWS = [
     source: "GrainBroker desk, based on market reporting"
   },
   {
-    feed: "au", date: "13 July 2026",
-    title: "Global wheat rally passes over local values as season outlook firms",
-    summary: "World wheat benchmarks have surged as much as 5% in early July, but Australian wheat and barley bids have barely moved, with old and new crop wheat still parked around $350/t (higher near $380/t on the Darling Downs where domestic demand is strong). A firmer Australian dollar, ample old-crop carry-out and a much better than feared start to the season are all working against local values chasing the offshore move, even as canola continues to run at $800-850/t across most port zones.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "13 July 2026",
-    title: "Pulse exports firm as growers watch for drier weather in the south",
-    summary: "ABS trade data shows Australia exported 27,260 tonnes of chickpeas and 198,368 tonnes of lentils in May, underlining pulses' growing share of the export mix alongside grain. On-farm, growers across SA and Victoria are hoping for a dry stretch over the coming weeks after recent falls tipped some paddocks from useful to waterlogged, with lentils the most exposed crop to further wet weather.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "13 July 2026",
-    title: "Tight US stocks keep Chicago wheat elevated near 632c/bu",
-    summary: "Chicago wheat touched 632c/bushel on 10 July, up over 3% on the day, as the market continues to digest USDA's below-forecast June 1 stocks estimate of 920 million bushels and a reduced 42.74 million acre wheat planting figure. Export demand is adding support too, with a private sale of 100,000 tonnes of US hard red spring wheat to Nigeria for the 2026/27 marketing year reported this week.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "13 July 2026",
-    title: "Russia, Ukraine both tipped for bigger 2025-26 wheat crops",
-    summary: "Trade estimates now put Russia's 2025-26 wheat crop at around 87.5 million tonnes, with Ukraine's winter wheat also tracking toward a larger harvest near 22.1 million tonnes on generally good crop condition. Bigger Black Sea supply continues to be the counterweight to the recent Chicago-led rally, with buyers able to rotate toward cheaper Russian and Ukrainian origin as northern hemisphere harvest progresses.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
     feed: "agtech", date: "13 July 2026",
     title: "Weekly agtech briefing: traceability and precision ag move from pilot to scale",
     summary: "Grain value chains are leaning further into blockchain-based traceability this year, with platforms tracking individual batches from paddock to port to meet rising certification and compliance demands. Alongside that, 2026 is shaping up as the year several precision ag tools - satellite remote sensing, drone imagery, AI-driven analytics and variable rate equipment - move out of pilot programs and into everyday use on farm.",
     source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "agtech", date: "Week of 29 June 2026",
-    title: "Weekly agtech briefing: paddock-to-port tracking matures",
-    summary: "Three developments this week: real-time grain quality sensing on headers moved to commercial release, a major bulk handler opened its stock API to third parties, and on-farm storage monitoring hit price parity with warehousing for the first time.",
-    source: "Sample content. Live feeds switch on at launch."
   }
 ];
