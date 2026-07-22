@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "23 July 2026",
+    title: "ASX wheat lifts toward $340 as Black Sea risk pulls local values higher",
+    summary: "ASX new-crop wheat rose around $15 to $340 a tonne into 22 July, tracking the offshore rally rather than any shift in the domestic balance sheet. New-crop bids in the Albany port zone were quoted near $880 FIS for canola, $846 for GM, wheat around $371 and barley about $328 on the 21 July trade, with east coast canola marked up $8 to $10 a tonne and wheat and barley reluctant followers. The move is being led by geopolitics out of the Black Sea, so growers still holding unpriced new crop have leverage they did not have a month ago, but a rally built on war risk can give ground quickly if shipping normalises.",
+    source: "via Grain Central"
+  },
+  {
+    feed: "au", date: "23 July 2026",
+    title: "ABARES pencils a smaller winter crop as barley and canola tonnes come off",
+    summary: "Australia's June crop update has barley production falling around 15 percent to 14.1 million tonnes in 2026-27 and canola down about 20 percent to 6.2 million tonnes, though both remain above their longer-run averages after the run of big seasons. In the north, Central Queensland is still expected to take off roughly 350,000 to 400,000 tonnes of sorghum with yields holding up on stored soil moisture from the wet season. Export shipments stayed solid into May, with ABS recording 826,954 tonnes of barley and 410,470 tonnes of sorghum for the month. Smaller forecast tonnes into a firmer global market is a supportive combination for growers weighing forward sales.",
+    source: "via Grain Central / ABARES"
+  },
+  {
+    feed: "world", date: "23 July 2026",
+    title: "World wheat runs to a two-year high as Black Sea attacks escalate",
+    summary: "Chicago wheat traded near 683 US cents a bushel on 22 July, up about 0.8 percent on the session and roughly 16 percent higher over the month, its strongest level in two years. Ukraine and Russia have stepped up missile and drone strikes on vessels and port infrastructure around the Black Sea and the Sea of Azov, and the market is pricing the risk that a corridor carrying a large share of world wheat gets disrupted. Chicago has added around 7 percent over the run, with Kansas and Minneapolis up about 8 percent and French wheat also up close to 8 percent. As before, this is a war-risk rally rather than a supply shortfall, so it can unwind quickly if the shooting eases.",
+    source: "via Reuters / Trading Economics"
+  },
+  {
+    feed: "world", date: "23 July 2026",
+    title: "Russian July export forecasts cut as Saudi Arabia books 661,000t elsewhere",
+    summary: "Analysts have trimmed Russia's July wheat export forecasts by 13 to 20 percent, with IKAR now expecting shipments below 2 million tonnes after Russia restricted movement through the Sea of Azov, a route handling roughly a quarter of its grain exports. Even so, buyers are covered elsewhere: Saudi Arabia's food security authority has awarded a fourth 2026 batch of 661,000 tonnes sourced from the European Union and North America. The International Grains Council left its 2026-27 world wheat production forecast unchanged at 821 million tonnes but flagged more uncertainty around Black Sea supply. Less near-term Russian wheat on the water is supportive for Australian sellers into Asian and Middle Eastern destinations.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "20 July 2026",
     title: "GIWA cuts WA wheat harvest forecast to 9.5Mt on a hot, dry finish to the growing season",
     summary: "The Grain Industry Association of Western Australia has the state's 2026 wheat harvest at 9.5 million tonnes, down close to 30 percent on the 13.3 million tonnes taken off in 2025. Hotter and drier conditions through the season are behind the cut. WA is Australia's largest wheat exporting state, so a downgrade of that size tightens the national export program rather than just the state one, and it is a large part of why WA port zone values have held a premium over eastern equivalents. Growers still holding unpriced new crop have more leverage than they did a month ago, but the same conditions that lifted the price are the ones cutting the tonnes.",
@@ -101,30 +125,6 @@ window.GB_NEWS = [
     feed: "world", date: "17 July 2026",
     title: "Russia holds export duty at zero even as futures rally",
     summary: "Russia's Ministry of Agriculture set the wheat export duty at zero for 15-21 July, down from 370.1 roubles a tonne the previous week, after the indicative export price of Russian wheat eased to US$232.3/t from US$239.4/t. The cut points to competitive Russian offers continuing to cap the broader rally even as Chicago and Euronext futures run higher on Black Sea risk. Global wheat consumption is still tracking above production near 824.5 million tonnes for the season, keeping stocks tight and buyers watchful.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "14 July 2026",
-    title: "Plum Grove locks in three-year, 600,000t Geraldton export deal",
-    summary: "Plum Grove Logistics has signed a three-year agreement with Mid West Ports to export 600,000 tonnes of grain a year through Geraldton, adding a further outlet for WA growers alongside the major bulk handlers. Separately, the Department of Agriculture has opened public consultation on an updated Wheat Port Code covering access to port terminals for bulk wheat exports, running through to the end of July, with the stated aim of simplifying port operations and lowering logistics costs for exporters.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "14 July 2026",
-    title: "New-crop canola keeps climbing at Albany, wheat and barley steady",
-    summary: "New-crop bids at FIS Albany were quoted at $853/t for canola and $810/t for GM canola, with wheat holding around $354/t and barley near $329/t. Canola and barley continue to lead the selling queue into harvest, with bulk handlers keen to move both crops early to free up supply-chain capacity ahead of the bigger wheat program later in the season.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "14 July 2026",
-    title: "Chicago wheat eases back after Friday's Azov-driven spike",
-    summary: "Chicago wheat slipped to 630.03c/bushel on 13 July, down slightly on the day but still up close to 7% over the past month. The pullback follows a sharp Friday rally in which Euronext milling wheat jumped 5.5% to a seven-week high on trader talk of a possible Russian closure of the Sea of Azov to shipping, after Ukraine struck a number of Russian tankers in the area.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "14 July 2026",
-    title: "Russia's crop outlook softens as diesel and logistics costs bite",
-    summary: "Trade estimates have Russia's 2025/26 wheat crop at 85.5-87.0 million tonnes as the country heads into the new season facing diesel supply delays and higher input costs. Analysts note the added friction may open the door for Romania, Bulgaria and Ukraine to pick up share as more reliable Black Sea suppliers, even as Ukraine's own winter wheat crop is tracking toward a larger harvest near 22.1 million tonnes on generally good crop condition.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
