@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "25 July 2026",
+    title: "Canola pushes higher while wheat and barley track sideways to end the week",
+    summary: "Canola was the standout again on Friday 24 July, bid higher while wheat and barley moved broadly sideways as the offshore wheat surge paused. ASX wheat bucked the Chicago pullback, held up by a firmer local bid structure even as the Australian dollar stayed under US70c, which flatters returns on export-priced grain. US weekly wheat export sales came in soft at about 290,000 tonnes against expectations near 375,000, led by Mexico and Taiwan, and some traders are calling the three-week rally overdone even as the underlying Black Sea disruption deepens. For growers, canola remains the clearest area of strength heading into the weekend.",
+    source: "via Grain Central"
+  },
+  {
+    feed: "au", date: "25 July 2026",
+    title: "New-crop bids hold firm in the west as a dry east-coast outlook lingers",
+    summary: "New-crop bids in the Albany port zone were quoted around A$870 a tonne FIS for canola, $840 for GM canola, wheat near $366 and barley about $331 on recent trade, with growers reported to have started forward selling small parcels of new-crop barley ex farm as values sit in the upper deciles. The seasonal watch remains the east coast, where forecasts still show little to no meaningful moisture for northern NSW and Queensland in the near term. A firm global market against patchy domestic rainfall is keeping forward-sales conversations active for growers weighing how much new crop to lock away.",
+    source: "via Grain Central / Farm Weekly"
+  },
+  {
+    feed: "world", date: "25 July 2026",
+    title: "Wheat eases from a two-year high as traders judge the rally overdone",
+    summary: "Chicago and Paris wheat both reached two-year highs this week before easing on Friday 24 July, with Chicago having rallied more than US$1.60 a bushel, or roughly 16 percent, over about three weeks on Black Sea risk and European crop losses. French milling wheat set a record near EUR219 a tonne on 14 July during a severe heatwave. The Friday pullback came as US export sales disappointed and some traders judged the run-up had outpaced the fundamentals, though the shipping and weather disruptions driving the move have not resolved. A rally built largely on risk premium can give back ground quickly if that premium unwinds.",
+    source: "via Bloomberg / Reuters"
+  },
+  {
+    feed: "world", date: "25 July 2026",
+    title: "Smaller US and Russian crops leave the wheat balance sheet structurally tight",
+    summary: "Behind the week-to-week price swings, the supply picture is tightening. The USDA has US wheat production down about 23 percent year on year, with the hard red winter crop forecast at its smallest since 1957-58, and expects global wheat use to run around 0.8 percent above production in 2026-27, a swing from a 2.3 percent surplus the year before. In Russia, the harvest is running one to two weeks behind last year on later planting and diesel shortages, IKAR has trimmed July exports to below two million tonnes, and SovEcon puts total wheat area at its smallest in 12 years. Tighter carryout stocks leave the market exposed to any fresh disruption.",
+    source: "via Reuters / USDA"
+  },
+  {
     feed: "au", date: "24 July 2026",
     title: "WA wheat sits about 11 percent under the US benchmark as the global rally rolls on",
     summary: "Western Australian wheat averaged around US$266 a tonne FOB through July, roughly US$34, or about 11 percent, below the US Gulf soft red winter benchmark near US$300, keeping Australian origin competitive into Asian demand even as offshore futures run higher on Black Sea risk. Against July last year WA values are only about 3 percent higher, so the recent lift is being driven by the global picture rather than any tightening at home. Growers still holding unpriced grain have the offshore rally working in their favour, but the discount to the US shows buyers can still source Australian tonnes without chasing the market.",
@@ -101,30 +125,6 @@ window.GB_NEWS = [
     feed: "world", date: "19 July 2026",
     title: "European crop downgrades drive Euronext wheat to a 17-month high",
     summary: "Euronext milling wheat jumped 7% on 15 July to EUR231.75 a tonne, its highest since February 2025, before easing back later in the week as the market judged the rally technically overbought. Behind the move are successive European supply cuts. Germany's DRV lowered its winter wheat estimate to 19.9 million tonnes from 22.6 million a year earlier, citing heat-driven premature ripening, while French yields are running about 3% below the five-year average with shortfalls of 10% to 20% in central regions. The European Commission's MARS unit trimmed its EU soft wheat yield estimate to 6.00 tonnes a hectare. German barley was largely unaffected at 9.34 million tonnes.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "18 July 2026",
-    title: "WA wheat crop downgrade adds to supply-side support",
-    summary: "A Grain Industry Association of Western Australia projection has the state's 2026 wheat harvest at around 9.5 million tonnes, down close to 30% on the 13.3 million tonnes cut in 2025, as a hotter and drier run through the season pares back earlier expectations. As one of the larger suppliers of wheat into Southeast Asia, the Middle East and China, a smaller WA crop feeds into the supply-side story behind the current global rally. Locally, ample old-crop carry-out and a firmer Australian dollar are still tempering how far domestic bids chase the offshore move.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "18 July 2026",
-    title: "New-crop barley and canola hold firm, sorghum lags feed wheat",
-    summary: "New-crop values are holding across the eastern states, with new-crop barley trading around $275 a tonne on farm and canola bids at many sites still north of $800/t, decile eight to nine territory and up $20-$25 on earlier levels. Barley export demand stays strong, with China taking roughly 80% of trade and limited competition until northern hemisphere new crop arrives. In the north, Central Queensland is set to harvest an estimated 350,000 to 400,000 tonnes of sorghum, though ex-farm sorghum near $310-$320/t is struggling to compete with local feedlot wheat bids around $380/t.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "18 July 2026",
-    title: "Chicago wheat eases from two-year high as traders bank profits",
-    summary: "Chicago wheat settled around 675 US cents a bushel on 17 July, easing back from the two-year high near 695c reached on 15 July as traders booked profits after a sharp run-up. Prices remain elevated, up more than 11% over the past month, with the Russia-Ukraine conflict showing no sign of easing and Russian forces resuming strikes on Ukrainian Black Sea port infrastructure. The market is weighing that war-risk premium against the prospect of competitive Russian offers as northern hemisphere harvest advances.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "18 July 2026",
-    title: "Russian harvest delay and Ukrainian port losses tighten Black Sea supply",
-    summary: "Analysts have Russia's wheat harvest running seven to 14 days behind last year on later planting and diesel supply shortages, and have trimmed July export forecasts, keeping a floor under the market. On the Ukrainian side, roughly a third of grain export capacity through Black Sea ports has been lost to intensified Russian attacks, with three Odesa terminals that account for more than 90% of the country's grain and vegetable oil shipments the focus of recent strikes. The combination is tightening near-term Black Sea availability even as both countries head toward workable new-season crops.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
