@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "26 July 2026",
+    title: "Canola leads a firm week for Australian grain as the global wheat rally carries local values",
+    summary: "With physical trade quiet over the weekend, the week to 25 July closed with canola the clear standout, pushing higher on strong global biofuel demand while wheat and barley held firm on the back of the offshore rally rather than any shift in the domestic balance sheet. New-crop canola bids in the Albany port zone had been quoted in the high A$860s to A$880 a tonne FIS through the week, well clear of eastern equivalents nearer A$755 to A$800, with the spread reflecting WA's export exposure and a tighter state crop. A weaker Australian dollar under US70c continues to flatter returns on export-priced grain. For growers, the combination of a firm global market and a smaller forecast crop keeps forward-sales conversations live going into the new week.",
+    source: "GrainBroker desk, based on Grain Central and market reporting"
+  },
+  {
+    feed: "au", date: "26 July 2026",
+    title: "Dry east-coast outlook and El Nino risk keep the focus on next season's tonnes",
+    summary: "The seasonal watch remains the east coast, where forecasts continue to show little meaningful rainfall for northern NSW and Queensland in the near term, and a rising chance of an El Nino developing later in 2026 is weighing on 2026-27 production prospects. GIWA has cut its WA wheat harvest estimate to around 9.5 million tonnes, close to 30 percent below last year, and ABARES has barley and canola tonnes easing from the run of big seasons, though both stay above their longer-run averages. Current-crop shipments held through May, but the supply cushion of the past two years may not carry into next harvest. A firmer global market against a potentially smaller crop is a combination worth watching on forward sales.",
+    source: "GrainBroker desk, based on GIWA, ABARES and BOM reporting"
+  },
+  {
+    feed: "world", date: "26 July 2026",
+    title: "World wheat holds near a two-year high after a 16 percent July rally",
+    summary: "Wheat closed the week to 25 July near its highest in two years after rallying around 16 percent through July on Black Sea shipping risk and European crop downgrades, though Chicago slipped to about 679 US cents a bushel on 24 July, down roughly 2.5 percent on the session, as soft US export sales and profit-taking pared the run. The move has been driven by war-risk premium and heat-hit European crops rather than a fresh shift in the balance sheet, so it can give back ground quickly if shipping normalises. For now the underlying disruptions have not resolved and the market is holding most of its gains.",
+    source: "via Bloomberg / Reuters"
+  },
+  {
+    feed: "world", date: "26 July 2026",
+    title: "Russian July wheat exports track toward the lowest in years as Azov disruption bites",
+    summary: "Russia's July wheat exports are running toward their weakest in several years, with Futures International putting the month near 1.5 million tonnes, around a third below last year and the lowest July since 2017, while IKAR sees shipments below 2 million tonnes. Later planting, diesel supply problems and restricted movement through the Sea of Azov, which normally handles roughly a quarter of Russian grain exports, are all slowing the pace to port. Analysts warn deep-water Black Sea terminals may not fully cover the shortfall during the August to October export peak, raising the risk of shipment delays. Less Russian wheat on the water in the near term is supportive for Australian sellers into Asian and Middle Eastern destinations.",
+    source: "GrainBroker desk, based on Reuters and market reporting"
+  },
+  {
     feed: "au", date: "25 July 2026",
     title: "Canola pushes higher while wheat and barley track sideways to end the week",
     summary: "Canola was the standout again on Friday 24 July, bid higher while wheat and barley moved broadly sideways as the offshore wheat surge paused. ASX wheat bucked the Chicago pullback, held up by a firmer local bid structure even as the Australian dollar stayed under US70c, which flatters returns on export-priced grain. US weekly wheat export sales came in soft at about 290,000 tonnes against expectations near 375,000, led by Mexico and Taiwan, and some traders are calling the three-week rally overdone even as the underlying Black Sea disruption deepens. For growers, canola remains the clearest area of strength heading into the weekend.",
@@ -101,30 +125,6 @@ window.GB_NEWS = [
     feed: "agtech", date: "20 July 2026",
     title: "Weekly agtech briefing: the sector stops chasing launches and starts looking like an industry",
     summary: "Reporting through July has been less about a single headline product and more about a market structure that is finally mature enough to map. Farm management systems that turn scattered field, weather and input data into daily decisions are the fastest growing segment, with forecasts around a 17 percent compound annual growth rate to the end of the decade, while satellite and remote sensing sits closer to 7 percent. The nearer-term item for grain traders is imaging: daily field scans with AI-driven multispectral analysis are moving toward commercial availability for agronomists and commodity traders, not just researchers. Better crop reads earlier in the season change who has an information edge going into a marketing decision.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "19 July 2026",
-    title: "ABARES has 2026-27 wheat crop at 26.7Mt as planted area falls to a six-year low",
-    summary: "ABARES has Australian wheat production for 2026-27 at 26.7 million tonnes, down from around 36 million tonnes the season prior, with wheat area at 10.9 million hectares. That is a 12% reduction and the smallest wheat plant since 2019-20. Higher fuel and fertiliser costs, along with unfavourable prices at planting, pushed growers toward barley, canola, oats and pulses. The Bureau of Meteorology outlook underpinning the forecast carries a 60% to 80% chance of below-average winter rainfall across many cropping regions, and the open question for final yields is how much urea growers are prepared to buy at current prices for July and August top-dressing.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "19 July 2026",
-    title: "WA new-crop canola pushes toward $880 as the east-west spread widens",
-    summary: "New-crop bids in the Albany port zone were quoted at A$880/t FIS for canola and $845 for GM on the 17 July trade, with wheat at $371 and barley at $330. Western Australian values continue to sit well clear of eastern equivalents, where canola has been trading closer to $785 to $800 and wheat in the mid-$300s. The gap reflects WA's export exposure and a tighter state crop outlook rather than any national shift, and growers weighing forward sales are working with a spread driven mainly by port zone and shipping demand.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "19 July 2026",
-    title: "Russia reroutes Azov grain flows as the wheat export duty returns to zero",
-    summary: "Russia is preparing to shift grain shipments away from the Sea of Azov after Ukrainian drone attacks struck 116 vessels over a nine-day period, forcing temporary suspension of traffic through the Don-Azov Canal and the Kerch Strait. The route handles roughly a quarter of Russian grain exports. Cargoes are expected to move instead through deep-water Black Sea terminals or Baltic ports, some of which have also been targeted. From 15 July the Russian wheat export duty returned to zero, having previously sat at 370.1 roubles a tonne, lowering the cost of competing offers into Middle East and North African tenders just as logistics tighten. Russia is projected to account for more than 20% of world wheat exports in 2026-27.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "world", date: "19 July 2026",
-    title: "European crop downgrades drive Euronext wheat to a 17-month high",
-    summary: "Euronext milling wheat jumped 7% on 15 July to EUR231.75 a tonne, its highest since February 2025, before easing back later in the week as the market judged the rally technically overbought. Behind the move are successive European supply cuts. Germany's DRV lowered its winter wheat estimate to 19.9 million tonnes from 22.6 million a year earlier, citing heat-driven premature ripening, while French yields are running about 3% below the five-year average with shortfalls of 10% to 20% in central regions. The European Commission's MARS unit trimmed its EU soft wheat yield estimate to 6.00 tonnes a hectare. German barley was largely unaffected at 9.34 million tonnes.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
