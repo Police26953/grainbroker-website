@@ -2,6 +2,36 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "27 July 2026",
+    title: "Australian wheat sits mid-pack on the world stage as the July export benchmark firms",
+    summary: "July trade puts WA wheat at around US$266 a tonne FOB, the cleanest read on where Australian grain sits against the majors. That is roughly US$34, or 11 percent, under US soft red winter wheat, but about US$6 over US hard red winter, US$16 over French and German wheat, and some US$37 over Russian origin. In other words Australia has clawed back competitiveness against the United States this year without getting anywhere near undercutting Russia or continental Europe. Against July 2025 the benchmark is up only about 3 percent, so most of the recent excitement has been offshore rather than a lift in what Australian growers are actually being paid. Domestic values in early July ran near A$347 a tonne in WA and A$324 to A$345 across the east.",
+    source: "GrainBroker desk, based on Farm Weekly and market reporting"
+  },
+  {
+    feed: "au", date: "27 July 2026",
+    title: "ABARES has barley and canola tonnes stepping back sharply for 2026-27",
+    summary: "The current ABARES numbers have barley production falling 15 percent to 14.1 million tonnes in 2026-27 and canola down 20 percent to 6.2 million tonnes. Both still sit above their five and ten year averages, so this is a step down from an unusually good run rather than a poor season in absolute terms. Winter crop yields are forecast 21 percent lower but still around 5 percent above the ten year average. The season splits hard by state: WA, South Australia and Victoria got average to well above average rain from February through April and went in with confidence, while NSW and southern Queensland were running very dry into mid-May and growers there made tighter planting calls. From here it is winter rainfall through the west and north that decides how close the crop lands to these forecasts.",
+    source: "GrainBroker desk, based on ABARES and Grain Central reporting"
+  },
+  {
+    feed: "world", date: "27 July 2026",
+    title: "European sellers pick up the business Russia cannot ship",
+    summary: "French loadings out of Rouen jumped to 200,355 tonnes for the week, close to double the 103,386 tonnes shipped the week prior, as buyers move away from constrained Russian supply. It is a useful signal because it shows the Black Sea disruption is not just a futures story - physical demand is being rerouted, and European origin is the near-term beneficiary. Russian July wheat export forecasts have been cut 13 to 20 percent, with IKAR now under 2 million tonnes against an earlier 2.5 million tonne call and SovEcon at about 2 million tonnes. Russia's harvest is also tracking 7 to 14 days behind last year on later planting and diesel supply problems, which slows the pace of grain reaching port.",
+    source: "GrainBroker desk, based on Grain Central and Reuters reporting"
+  },
+  {
+    feed: "world", date: "27 July 2026",
+    title: "North American weather is now doing as much work as the Black Sea",
+    summary: "The supply-side story has broadened out. A run of days above 100F across the US Northern Plains has stressed spring wheat right into harvest, and the WQC crop tour finalised yield at 48 bushels an acre against USDA's 58 bushel call - a wide enough gap to matter for high-protein supply. Hot, dry conditions through the Corn Belt are pulling soil moisture down ahead of the critical pollination window. In Canada, ICE canola has pushed to fresh three-year highs on Prairie production risk, with November settling at C$822.60 a tonne on 22 July after roughly C$30 of gains in a week; earlier excess moisture cost acres and brought disease, and the pattern has since flipped hot and dry. For Australian sellers it means the current strength has more than one leg holding it up.",
+    source: "GrainBroker desk, based on Grain Central and market reporting"
+  },
+  {
+    feed: "agtech", date: "27 July 2026",
+    title: "Weekly agtech briefing: the unified marketplace is where the money is going",
+    summary: "The clearest agtech investment theme running into the second half of 2026 is consolidation of the buy and sell side onto single platforms - comparing suppliers, checking grain prices, booking agronomy, arranging freight and in some cases trading carbon, all through one interface rather than a dozen phone calls. The pitch is transparency and less admin, and capital is following it. Alongside that, precision ag is quietly shifting from premium add-on to baseline: sensor networks and farm management systems that turn scattered field, weather and input data into daily decisions are now treated as standard rather than experimental. Worth noting that a platform is only as good as the relationships and the price discovery behind it - the tooling changes how a deal gets done, not whether it stacks up.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
     feed: "au", date: "26 July 2026",
     title: "Canola leads a firm week for Australian grain as the global wheat rally carries local values",
     summary: "With physical trade quiet over the weekend, the week to 25 July closed with canola the clear standout, pushing higher on strong global biofuel demand while wheat and barley held firm on the back of the offshore rally rather than any shift in the domestic balance sheet. New-crop canola bids in the Albany port zone had been quoted in the high A$860s to A$880 a tonne FIS through the week, well clear of eastern equivalents nearer A$755 to A$800, with the spread reflecting WA's export exposure and a tighter state crop. A weaker Australian dollar under US70c continues to flatter returns on export-priced grain. For growers, the combination of a firm global market and a smaller forecast crop keeps forward-sales conversations live going into the new week.",
@@ -95,30 +125,6 @@ window.GB_NEWS = [
     feed: "world", date: "23 July 2026",
     title: "Russian July export forecasts cut as Saudi Arabia books 661,000t elsewhere",
     summary: "Analysts have trimmed Russia's July wheat export forecasts by 13 to 20 percent, with IKAR now expecting shipments below 2 million tonnes after Russia restricted movement through the Sea of Azov, a route handling roughly a quarter of its grain exports. Even so, buyers are covered elsewhere: Saudi Arabia's food security authority has awarded a fourth 2026 batch of 661,000 tonnes sourced from the European Union and North America. The International Grains Council left its 2026-27 world wheat production forecast unchanged at 821 million tonnes but flagged more uncertainty around Black Sea supply. Less near-term Russian wheat on the water is supportive for Australian sellers into Asian and Middle Eastern destinations.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "20 July 2026",
-    title: "GIWA cuts WA wheat harvest forecast to 9.5Mt on a hot, dry finish to the growing season",
-    summary: "The Grain Industry Association of Western Australia has the state's 2026 wheat harvest at 9.5 million tonnes, down close to 30 percent on the 13.3 million tonnes taken off in 2025. Hotter and drier conditions through the season are behind the cut. WA is Australia's largest wheat exporting state, so a downgrade of that size tightens the national export program rather than just the state one, and it is a large part of why WA port zone values have held a premium over eastern equivalents. Growers still holding unpriced new crop have more leverage than they did a month ago, but the same conditions that lifted the price are the ones cutting the tonnes.",
-    source: "GrainBroker desk, based on market reporting"
-  },
-  {
-    feed: "au", date: "20 July 2026",
-    title: "Old-crop barley and sorghum hold firm on the Downs while new-crop barley sits well behind",
-    summary: "Old-crop barley has been quoted around $380 to $385, with new crop closer to $375 for January onward delivery. Sorghum old crop has been trading at $345 to $350 Downs. The gap between old and new crop barley is the number worth watching for anyone sitting on stored grain, because it is the market paying for tonnes now rather than tonnes later. In the west, new-crop barley bids in the Albany port zone have been running in the $328 to $330 FIS range through mid-July, so the eastern old-crop premium is doing most of the work at the moment.",
-    source: "via Grain Central"
-  },
-  {
-    feed: "world", date: "20 July 2026",
-    title: "Chicago wheat runs to a two-year high as Black Sea strikes escalate",
-    summary: "Chicago wheat closed at 682.75 US cents a bushel on 17 July, up 1.19 percent on the session and roughly 12.7 percent over the month, putting the contract about 25 percent above the same time last year and at its highest level since May 2024. The move came on escalating Ukrainian and Russian strikes around the Black Sea and the risk that a corridor carrying a large share of world wheat gets disrupted. A rally built on war risk rather than a supply shortfall can unwind quickly if the shooting stops, which is worth factoring in before treating current values as a new floor.",
-    source: "via Trading Economics"
-  },
-  {
-    feed: "world", date: "20 July 2026",
-    title: "Analysts cut Russian July wheat export forecasts by up to 20 percent",
-    summary: "IKAR now expects Russian wheat exports below 2 million tonnes for July, down from an earlier 2.5 million tonne estimate, with SovEcon also cutting to around 2 million tonnes. The Russian wheat harvest is running roughly a week to a fortnight behind last year on later planting and diesel supply problems, slowing the pace of grain reaching port. Shipping companies have been restricting movements through the Azov-Don Canal since 10 July on attack risk, and around a quarter of Russian grain and sunflower oil exports normally move through the shallow Azov ports. Less Russian wheat on the water in the near term is supportive for Australian sellers into Asian and Middle Eastern destinations.",
     source: "GrainBroker desk, based on market reporting"
   },
   {
