@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "8 August 2026",
+    title: "Northern wheat and barley hold their premium as the seasonal finish stays the main question",
+    summary: "Reported bids to the end of last week had Brisbane APW1 wheat near A$398 a tonne, up about A$2 for the week and roughly 26 per cent above this time last year. Brisbane feed barley gained around A$6 to A$391, Newcastle barley A$6 to A$369 and Port Kembla A$7 to A$333. The south stayed calmer - Portland wheat eased about A$3 to A$329, Geelong slipped A$1 to A$304, Adelaide wheat held at A$319 and Adelaide barley added A$3 to A$278. The split is being driven by the seasonal outlook more than by demand. Northern buyers are pricing in the risk of a drier finish, while better southern crop prospects have taken the urgency out of chasing tonnes. Recent dry weather has let growers get onto paddocks and finish spraying, but crops are relatively advanced and frost risk is still live. Bids are zone and spec specific and move daily - check your own site.",
+    source: "GrainBroker desk, via Farmonline and Episode 3 market wrap"
+  },
+  {
+    feed: "au", date: "8 August 2026",
+    title: "Canola bids drop across nearly every port while urea and diesel move the other way",
+    summary: "Canola was the clear weak point last week, with bids down 4 to 5 per cent at most ports. Brisbane fell about A$38 to A$695 a tonne, Newcastle A$34 to A$724, Port Kembla A$37 to A$724, Portland A$28 to A$724 and Geelong A$28 to A$730. Adelaide was the exception, unchanged near A$729. That happened despite Canadian canola futures rising around 11 per cent over the week, which says local bids were being set by buyer caution and softer crude and European oilseed values rather than by the Canadian board. Input costs went the other way. Australian urea rose about 6 per cent to A$824 a tonne and is roughly 14 per cent higher than a month ago, pushed along by India's new 1.7 million tonne tender and continued Middle East shipping risk. Around 96 per cent of forecast seasonal urea requirements have already been imported, so the local issue is replacement cost rather than availability. Diesel rose about 10 per cent and petrol about 11 per cent even as crude oil eased. Grain prices are not falling over, but the gap between crop revenue and the cost of growing and moving it is getting tighter.",
+    source: "GrainBroker desk, via Farmonline and Episode 3 market wrap"
+  },
+  {
+    feed: "world", date: "8 August 2026",
+    title: "Odesa strikes cut Ukraine's export capacity, and the season forecast with it",
+    summary: "Four consecutive days of drone strikes on commercial vessels and storage at Odesa have pushed traders and shipowners to pause activity in the area, with 11 port workers and sailors reported killed. Odesa had been handling around 6 million tonnes of cargo a month and is now estimated to be able to move closer to 4 million tonnes of grain. The season revision is the bigger number. Ukrainian agricultural exports for 2026-27 are now being projected at roughly 29.6 million tonnes against an earlier estimate of 64.4 million, a fall of about 54 per cent, with wheat exports potentially down 53 per cent to 8.3 million tonnes. Kernel, Ukraine's largest grain exporter, has halted operations at Chornomorsk, where several of the port's large grain terminals have stopped buying. This is a physical supply story that will take months rather than weeks to work through.",
+    source: "GrainBroker desk, via Bloomberg and World Grain"
+  },
+  {
+    feed: "world", date: "8 August 2026",
+    title: "Russia's constraint has shifted from price to logistics, and the board has partly priced it in",
+    summary: "The Russian export problem this season is no longer about undercutting everyone on price. SovEcon has cut its 2026-27 Russian wheat export forecast to about 44.6 million tonnes and put August shipments at 3 to 4 million tonnes, down somewhere between 33 and 42 per cent on last year, pointing at logistics disruption and transport cost rather than flat price as the binding constraint. Sharply higher freight and marine insurance in the Black Sea have stripped away the cost advantage Russian wheat has leaned on for several seasons, and Russia has responded by increasing vessel protection in the Azov and looking at alternative cargo routes. Notably, futures did not chase the story further last week - Chicago, Kansas and Minneapolis wheat each eased around 1 per cent and French wheat was unchanged, after the earlier run to two-year highs. In Australian dollar terms Russian wheat fell about 6 per cent to A$210 a tonne, still roughly 24 per cent below a year ago. Cheap Russian wheat has not disappeared. It has just become harder to move.",
+    source: "GrainBroker desk, via SovEcon and Farmonline reporting"
+  },
+  {
     feed: "au", date: "31 July 2026",
     title: "July closes with the north-south split intact and old crop still the better-paid tonne",
     summary: "Australian cash markets end July the way they spent most of it - northern bids paying up for scarcity, southern bids taking their lead from a softer global board. Late-month reported bids had Brisbane APW1 wheat around A$395 a tonne and Newcastle around A$371, with Brisbane feed barley near A$384. In the west, new crop Albany barley was bid around A$334 and new crop canola around A$900 a tonne FIS, with GM canola near A$885. Canola across most east coast zones softened through the last week of the month as crude oil and global oilseed values eased. For growers still holding old crop, the north is where the premium has been sitting. New crop pricing is now open in enough zones that it is worth knowing your number before the phone rings. Bids are zone and spec specific and move daily - check your own site.",
@@ -96,30 +120,6 @@ window.GB_NEWS = [
     title: "Russian shipments stall through July as US crop tour trims production estimates",
     summary: "Reporting puts Russian wheat exports down somewhere between 13 and 20 percent for July, with shipping close to halted at points during the month. Russia and Ukraine together account for more than a quarter of world wheat exports and around 10 percent of corn, so a stoppage of that size at peak harvest removes a meaningful volume from the near-term supply picture. Adding to it, a US crop tour has come back with lower production estimates than the market was carrying. The combination is what has taken wheat from a nervous market to a genuinely tight one on paper. Buyers in the Middle East and Asia now have to source those tonnes elsewhere, which is where competing origins, Australia included, stand to benefit.",
     source: "GrainBroker desk, based on Reuters and AgWeb reporting"
-  },
-  {
-    feed: "au", date: "27 July 2026",
-    title: "Australian wheat sits mid-pack on the world stage as the July export benchmark firms",
-    summary: "July trade puts WA wheat at around US$266 a tonne FOB, the cleanest read on where Australian grain sits against the majors. That is roughly US$34, or 11 percent, under US soft red winter wheat, but about US$6 over US hard red winter, US$16 over French and German wheat, and some US$37 over Russian origin. In other words Australia has clawed back competitiveness against the United States this year without getting anywhere near undercutting Russia or continental Europe. Against July 2025 the benchmark is up only about 3 percent, so most of the recent excitement has been offshore rather than a lift in what Australian growers are actually being paid. Domestic values in early July ran near A$347 a tonne in WA and A$324 to A$345 across the east.",
-    source: "GrainBroker desk, based on Farm Weekly and market reporting"
-  },
-  {
-    feed: "au", date: "27 July 2026",
-    title: "ABARES has barley and canola tonnes stepping back sharply for 2026-27",
-    summary: "The current ABARES numbers have barley production falling 15 percent to 14.1 million tonnes in 2026-27 and canola down 20 percent to 6.2 million tonnes. Both still sit above their five and ten year averages, so this is a step down from an unusually good run rather than a poor season in absolute terms. Winter crop yields are forecast 21 percent lower but still around 5 percent above the ten year average. The season splits hard by state: WA, South Australia and Victoria got average to well above average rain from February through April and went in with confidence, while NSW and southern Queensland were running very dry into mid-May and growers there made tighter planting calls. From here it is winter rainfall through the west and north that decides how close the crop lands to these forecasts.",
-    source: "GrainBroker desk, based on ABARES and Grain Central reporting"
-  },
-  {
-    feed: "world", date: "27 July 2026",
-    title: "European sellers pick up the business Russia cannot ship",
-    summary: "French loadings out of Rouen jumped to 200,355 tonnes for the week, close to double the 103,386 tonnes shipped the week prior, as buyers move away from constrained Russian supply. It is a useful signal because it shows the Black Sea disruption is not just a futures story - physical demand is being rerouted, and European origin is the near-term beneficiary. Russian July wheat export forecasts have been cut 13 to 20 percent, with IKAR now under 2 million tonnes against an earlier 2.5 million tonne call and SovEcon at about 2 million tonnes. Russia's harvest is also tracking 7 to 14 days behind last year on later planting and diesel supply problems, which slows the pace of grain reaching port.",
-    source: "GrainBroker desk, based on Grain Central and Reuters reporting"
-  },
-  {
-    feed: "world", date: "27 July 2026",
-    title: "North American weather is now doing as much work as the Black Sea",
-    summary: "The supply-side story has broadened out. A run of days above 100F across the US Northern Plains has stressed spring wheat right into harvest, and the WQC crop tour finalised yield at 48 bushels an acre against USDA's 58 bushel call - a wide enough gap to matter for high-protein supply. Hot, dry conditions through the Corn Belt are pulling soil moisture down ahead of the critical pollination window. In Canada, ICE canola has pushed to fresh three-year highs on Prairie production risk, with November settling at C$822.60 a tonne on 22 July after roughly C$30 of gains in a week; earlier excess moisture cost acres and brought disease, and the pattern has since flipped hot and dry. For Australian sellers it means the current strength has more than one leg holding it up.",
-    source: "GrainBroker desk, based on Grain Central and market reporting"
   },
   {
     feed: "agtech", date: "27 July 2026",
