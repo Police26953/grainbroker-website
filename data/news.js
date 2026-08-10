@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "11 August 2026",
+    title: "West holds a clear premium over eastern bids across canola, barley and wheat",
+    summary: "The west continued to price above the east through the first full week of August. Grain Central had canola bid around A$845 a tonne in WA on Monday against about A$797 in the east, with GM canola near A$825 west and A$750 east. Barley showed the same shape at roughly A$321 FIS Albany against A$306 track Geelong, and wheat has been quoted near A$370 FIS Albany against about A$355 track Geelong. The spread is being carried by a better WA season and steady oilseed demand rather than any single trade. Growers comparing zones should note these are indicative track and FIS quotes only - the bid on any given parcel depends on port, grade, spec and delivery window.",
+    source: "via Grain Central"
+  },
+  {
+    feed: "au", date: "11 August 2026",
+    title: "Dry outlook keeps the downside risk on wheat as barley area picks up the slack",
+    summary: "ABARES has the 2026-27 national winter crop at 54.5 million tonnes, down about 21 per cent on last season, with yields forecast to fall 21 per cent but still sit around 5 per cent above the ten-year average. The Bureau's three-month outlook flagged a 60 to 80 per cent chance of below average rainfall across most NSW cropping country, and wheat is where the clearest downside sits. Planting decisions have already shifted with it: barley area is expected up about 8 per cent and canola up 2 per cent, while wheat area falls, as growers chase margin against higher input costs. WA, SA and Victoria went in with average to well above average February-April rainfall; NSW and southern Queensland did not.",
+    source: "via ABARES and Grain Central"
+  },
+  {
+    feed: "world", date: "11 August 2026",
+    title: "Chicago wheat firms to a monthly high on Black Sea supply disruption",
+    summary: "The most-traded Chicago wheat contract was up about 1.7 per cent at US$6.50-3/4 a bushel on Monday, its highest of the month, with Black Sea shipping risk doing most of the lifting. Ukraine and Russia have continued to strike each other's vessels and port infrastructure, and shipping companies have restricted traffic through the Azov-Don Canal since 10 July on attack risk - a material constraint given roughly a quarter of Russian grain and sunflower oil exports move through the shallow Sea of Azov ports. The benchmark is running more than 25 per cent above the same point last year. Direction, not the daily print, is what matters for Australian sellers here.",
+    source: "via Reuters and Bloomberg"
+  },
+  {
+    feed: "world", date: "11 August 2026",
+    title: "Russian export values slip even as August shipments are expected to lift",
+    summary: "Russian wheat export prices eased over the past week under pressure from higher freight rates and war-risk insurance premiums, which are eating into the netback rather than reflecting weaker demand. Analysts still expect Russia to ship more wheat in August than it did in July. Working the other way, the Russian harvest is running roughly 7 to 14 days behind last year on later planting and diesel supply problems, which is slowing the pace at which grain reaches export position. The net effect is a cheap origin that is harder and more expensive to move - the reason global benchmarks have held a risk premium while Russian FOB values have not.",
+    source: "via Reuters"
+  },
+  {
     feed: "au", date: "9 August 2026",
     title: "Canola carries the week in the west while eastern bids drift sideways",
     summary: "Canola did most of the work in the west last week. Albany bids swung between roughly A$820 and A$841 a tonne across the five sessions, finishing Friday up about A$10 at A$841, with barley bid around A$321 FIS and wheat near A$370 earlier in the week. Eastern values were flatter and a touch softer, with canola around A$795 and barley near A$306 track Geelong, and wheat bid about A$355. The pattern is consistent with what growers have been seeing for a month now - oilseed demand is holding a bid under canola while cereals wait on a clearer read of the finish. Bids are zone, port and spec specific, and the numbers above are indicative track and FIS quotes rather than a price any one grower will be offered.",
@@ -96,30 +120,6 @@ window.GB_NEWS = [
     title: "Wheat at two-year highs on both Chicago and Paris, but this is a risk premium, not a demand rally",
     summary: "CBOT wheat has pushed above 680 US cents a bushel and reached its highest level in two years, with Paris milling wheat following, after missile and drone attacks on vessels in the Black Sea and Sea of Azov escalated the export disruption. Corn has been dragged to a two-month high alongside it. Russia and Ukraine together account for more than a quarter of global wheat exports and around 10 per cent of global corn exports, which is why infrastructure risk in that corridor repices the whole complex so quickly. Worth being clear about what is driving this: the move is built on supply risk and weather concerns in key producing regions, not on new demand. Risk premium can come out of a market as fast as it goes in, and a genuine de-escalation or a resumption of normal Azov navigation would take a portion of this back. Growers weighing whether to price into strength should treat the current level as an opportunity created by an unresolved situation rather than a new floor.",
     source: "GrainBroker desk, based on Bloomberg, Reuters and Business Recorder market reporting"
-  },
-  {
-    feed: "au", date: "29 July 2026",
-    title: "Canola bids push through A$900 in the west as new crop pricing opens up",
-    summary: "New crop canola bids in the Albany port zone were quoted around A$900 a tonne FIS late last week, with GM canola near A$885, wheat around A$381 and barley around A$334. That is a meaningful move in a week: the same zone was showing roughly A$870 for canola, A$840 GM, A$366 wheat and A$331 barley the previous Monday. Canola trading with a nine in front is the first time bids have been at that level since the middle of last year, and it reflects both firmer offshore oilseed values and a smaller expected Australian canola area. For growers still deciding how much new crop to price, the canola board is currently the most improved of the four, and the barley and wheat numbers have moved far less. Bids are zone-specific, so growers should check their own site rather than assume Albany levels apply on the east coast.",
-    source: "GrainBroker desk, based on Grain Central daily market reporting"
-  },
-  {
-    feed: "au", date: "29 July 2026",
-    title: "A smaller winter crop is meeting a rallying world market, but local values have not re-rated yet",
-    summary: "ABARES has national winter crop production at 54.5 million tonnes for 2026-27, down 21 per cent year on year, with planted area easing about 7 per cent to 23.6 million hectares. Wheat carries most of the fall: area is forecast down 12 per cent to 10.9 million hectares, the smallest since 2019-20, and production down 26 per cent to 26.7 million tonnes, some 23 per cent below the five-year average. Dry conditions in northern cropping regions and margins favouring other crops are behind the wheat area cut. Despite that, Australian values have stayed relatively flat while offshore benchmarks have run higher through July, with WA wheat around US$266 a tonne FOB and only about 3 per cent above where it sat in July 2025. Ample old crop supply and a firmer Australian dollar have absorbed most of the offshore move so far. The question for the next few weeks is whether a genuinely smaller crop starts to pull local values up toward the world market.",
-    source: "GrainBroker desk, based on ABARES June crop report and market reporting"
-  },
-  {
-    feed: "world", date: "29 July 2026",
-    title: "Chicago wheat has added roughly 16 per cent through July on Black Sea supply risk",
-    summary: "Chicago wheat futures pushed to around US$6.70 a bushel in mid-July, the highest level since 12 May, and have gained in the order of 16 per cent across the month. The driver is not a demand story but a supply-risk story: continued Russian and Ukrainian strikes around Black Sea infrastructure have raised doubts about whether export volumes out of two of the world's largest wheat suppliers can move on schedule. Roughly a quarter of Russian grain and sunflower oil exports transit the shallow ports of the Sea of Azov, which is why corridor disruption translates into price so directly. Corn has been pulled higher alongside it. Rallies built on war risk rather than a physical shortfall can unwind quickly if the corridor stabilises, so this is a move to watch rather than one to extrapolate.",
-    source: "GrainBroker desk, based on Reuters and Bloomberg market reporting"
-  },
-  {
-    feed: "world", date: "29 July 2026",
-    title: "Russia's July wheat export pace is tracking as the slowest for the month since 2017",
-    summary: "Russian wheat exports for July are being put near 1.5 million tonnes, down roughly a third on the same month last year and the lowest July figure since 2017, with analysts having cut their forecasts for the month by somewhere between 13 and 20 per cent. Logistics rather than crop size appear to be the constraint. The Russian harvest is running an estimated seven to 14 days behind last year on later planting and diesel supply problems, which slows the rate at which grain reaches port. A slower Russian program matters to Australian sellers because Russia is the price setter at the bottom of the market, and WA wheat currently sits about US$37 a tonne above Russian origin. If the export pace stays subdued into August, buyers in the Middle East and Asia have more reason to look at alternative origins than they did a month ago.",
-    source: "GrainBroker desk, based on Reuters and Ukragroconsult reporting"
   },
   {
     feed: "agtech", date: "27 July 2026",
