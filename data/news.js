@@ -2,6 +2,30 @@
 // feed: "au" (Australian grain, daily) | "world" (Black Sea / Ukraine, daily) | "agtech" (weekly briefing)
 window.GB_NEWS = [
   {
+    feed: "au", date: "12 August 2026",
+    title: "Fertiliser and fuel costs climb again, squeezing margins ahead of the finish",
+    summary: "The pressure on grower margins right now is coming from the cost side rather than the bid side. Grain Central reporting has Australian urea up about 6 per cent to around A$824 a tonne, roughly 14 per cent higher than a month earlier, while diesel and petrol lifted 10 to 11 per cent even as crude oil eased. That combination matters more than a few dollars of movement on the wheat track. Growers weighing a top-dress decision or a late spray pass into a potentially dry finish are doing it against a materially higher input bill than they budgeted at planting. Anyone modelling breakeven on the 2026-27 crop should rerun it on current input pricing, not autumn assumptions.",
+    source: "via Grain Central"
+  },
+  {
+    feed: "au", date: "12 August 2026",
+    title: "Australian bids hold their ground as Chicago eases off the early-August high",
+    summary: "Chicago wheat drifted back on Tuesday, easing about 1.6 per cent to settle near US$6.30 a bushel and giving up part of the Black Sea risk premium built through the first week of the month. Australian bids have been slower to follow. Track and FIS quotes through last week held around A$370 a tonne FIS Albany and A$355 track Geelong, with the west continuing to carry a premium over the east. The reluctance to fall in step with Chicago reflects a tighter domestic supply picture into a drier forecast finish rather than any new export demand. For growers holding unsold tonnes, the relevant question is whether that local support persists once harvest pressure arrives, not where the futures board closed overnight.",
+    source: "GrainBroker desk, based on market reporting"
+  },
+  {
+    feed: "world", date: "12 August 2026",
+    title: "Ukraine cuts its 2026-27 wheat export forecast by a quarter",
+    summary: "Ukraine has revised its 2026-27 wheat export estimate down about 25 per cent, to roughly 10.8 million tonnes from a previous 14.5 million, with the total grain export figure cut around 12 per cent to 38 to 40 million tonnes. The driver is logistics and security rather than production - intensified strikes on port infrastructure around Greater Odesa and on civilian vessels have restricted loading, and low water on the Danube has limited the capacity of the alternative river route that normally absorbs some of that displaced volume. A harvest that is not itself short is struggling to reach export position. That distinction matters: the tonnes exist, but the market has to price the risk that they arrive late or not at all.",
+    source: "via UkrAgroConsult and Reuters"
+  },
+  {
+    feed: "world", date: "12 August 2026",
+    title: "Russian August shipments now tracked at a decade low in what is normally peak month",
+    summary: "Sovecon has pegged Russian wheat exports for August at 3 to 3.4 million tonnes against about 4.5 million a year earlier - a fall of roughly a quarter to a third in the month that usually carries the heaviest shipping program, and the weakest August in a decade. IKAR has cut its full-season Russian wheat export forecast to 44.5 million tonnes. A harvest running one to two weeks behind last year, higher freight and war-risk insurance premiums, and constrained movement through the Azov ports are all contributing. Even so, Chicago wheat is still trading more than 10 per cent below the two-year high of about US$7.08 set on 22 July, which suggests the market is treating the shortfall as a delay in timing rather than a loss of supply.",
+    source: "via Reuters and Bloomberg"
+  },
+  {
     feed: "au", date: "11 August 2026",
     title: "West holds a clear premium over eastern bids across canola, barley and wheat",
     summary: "The west continued to price above the east through the first full week of August. Grain Central had canola bid around A$845 a tonne in WA on Monday against about A$797 in the east, with GM canola near A$825 west and A$750 east. Barley showed the same shape at roughly A$321 FIS Albany against A$306 track Geelong, and wheat has been quoted near A$370 FIS Albany against about A$355 track Geelong. The spread is being carried by a better WA season and steady oilseed demand rather than any single trade. Growers comparing zones should note these are indicative track and FIS quotes only - the bid on any given parcel depends on port, grade, spec and delivery window.",
@@ -96,30 +120,6 @@ window.GB_NEWS = [
     title: "Ukraine has lost about a third of its Black Sea export capacity and growers are carrying the cost",
     summary: "Ukrainian export capacity through Black Sea ports is reported down by roughly a third amid continued strikes on ships and port infrastructure, with Ukrainian farm groups warning of widespread grower insolvencies if maritime shipping stays constrained. Chicago wheat has held in the mid US$6 a bushel range late in the month after a roughly 16 per cent July gain, with sharp two-way sessions as traders price war risk against a well-supplied world balance sheet. That volatility is the point worth noting for Australian sellers: a rally built on supply risk can unwind quickly if the risk recedes, so it rewards having a target price set in advance rather than chasing the tape.",
     source: "GrainBroker desk, via UkrAgroConsult and Bloomberg"
-  },
-  {
-    feed: "au", date: "30 July 2026",
-    title: "Northern cash markets firm while southern values slip, and the gap is widening",
-    summary: "Australian cash markets split sharply along a north-south line over the past week. Brisbane APW1 wheat lifted about A$13 a tonne to around A$395, and Newcastle gained roughly A$8 to around A$371. Feed barley followed the same pattern, with Brisbane up about A$6 to around A$384 and Newcastle up about A$4. Canola went the other way in most zones, easing A$9 to A$12 a tonne at Brisbane, Newcastle, Port Kembla, Portland and Geelong, with Adelaide broadly unchanged as crude oil and global oilseed values retreated. The read is that dry northern conditions are now doing more to set local wheat and barley values than offshore futures are. Growers with grain in the north are being paid for scarcity; southern sellers are still trading off the global board. Bids are zone-specific and move daily, so check your own site before making a pricing decision.",
-    source: "GrainBroker desk, based on Australian Community Media grain price reporting"
-  },
-  {
-    feed: "au", date: "30 July 2026",
-    title: "Barley is the one winter crop area going up this year, and the northern feed bid shows why",
-    summary: "Inside a national winter crop forecast that is down 21 per cent, barley is the exception. ABARES has barley area forecast up about 4 per cent for 2026-27 while wheat area falls 12 per cent to the smallest since 2019-20. The reasoning growers have given is straightforward: barley has been pricing well relative to wheat and it carries a lower fertiliser requirement, which matters in a year where input spend is under scrutiny. That decision is looking reasonable so far, with Brisbane feed barley bid around A$384 a tonne and northern feedlot demand holding. The open question is topdressing. ABARES expects growers to have had enough fertiliser at planting but flagged greater uncertainty around urea availability for July and August topdressing, and the Bureau of Meteorology has a 60 to 75 per cent chance of below median rainfall across most of Queensland. A barley crop that does not get its top-up in a dry finish will not deliver the yield the area increase implies.",
-    source: "GrainBroker desk, based on ABARES June crop report and Grain Central feedgrain reporting"
-  },
-  {
-    feed: "world", date: "30 July 2026",
-    title: "SovEcon cuts Russian wheat exports to 44.6m tonnes as Azov navigation closures bite",
-    summary: "Consultancy SovEcon has lowered its Russian 2026-27 wheat export forecast by about 4.1 per cent to 44.6 million tonnes, and its barley export forecast by 5.9 per cent to 3.2 million tonnes, citing navigation closures in the Sea of Azov. The physical picture behind that downgrade matters as much as the number. Russia's wheat harvest is reported running seven to 14 days behind last year on the back of later planting and diesel fuel shortages, which slows the rate at which grain reaches port. Analysts have cut Russian July wheat export estimates by somewhere in the range of 13 to 20 per cent. Russia is the world's largest wheat exporter, so a downgrade of this size removes a meaningful chunk of the cheapest tonnes from the global offer. For Australian sellers the relevance is competitive: less Russian wheat at the low end of the price stack is what gives Australian origin room to compete into Asian and Middle Eastern demand later in the season.",
-    source: "GrainBroker desk, based on SovEcon figures via Grain Central and Reuters reporting"
-  },
-  {
-    feed: "world", date: "30 July 2026",
-    title: "Wheat at two-year highs on both Chicago and Paris, but this is a risk premium, not a demand rally",
-    summary: "CBOT wheat has pushed above 680 US cents a bushel and reached its highest level in two years, with Paris milling wheat following, after missile and drone attacks on vessels in the Black Sea and Sea of Azov escalated the export disruption. Corn has been dragged to a two-month high alongside it. Russia and Ukraine together account for more than a quarter of global wheat exports and around 10 per cent of global corn exports, which is why infrastructure risk in that corridor repices the whole complex so quickly. Worth being clear about what is driving this: the move is built on supply risk and weather concerns in key producing regions, not on new demand. Risk premium can come out of a market as fast as it goes in, and a genuine de-escalation or a resumption of normal Azov navigation would take a portion of this back. Growers weighing whether to price into strength should treat the current level as an opportunity created by an unresolved situation rather than a new floor.",
-    source: "GrainBroker desk, based on Bloomberg, Reuters and Business Recorder market reporting"
   },
   {
     feed: "agtech", date: "27 July 2026",
