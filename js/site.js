@@ -20,6 +20,8 @@
     buyerGhlLocationId: "DJQBTIQasTdt54iPJuny",
     // GHL's invisible Turnstile site key (from LeadConnector form widget).
     buyerTurnstileSiteKey: "0x4AAAAAACCpVlau-4k7cJ33",
+    // Inbound webhook backup (no Turnstile). Set when workflow is live.
+    buyerWebhookUrl: "",
     buyerCheckFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAF4JSYeF1sh00OXN8UCwc5-V_9Gl-KVslk6Bmds0o6XTDv8CU5p_zwNTYeUxoSco4CtYM5mCoXR5SSCDCCZ4NGhZpNCQ8ZTjmRTGpT3YMgv94WgN4CDnsUq7dWKkKoHMf0-ShJ6tlaOs9XuyWuG5BRJu4gqSdT_5rFeewo0pLa_CUeOmK2UGS2kSKMB8_HhJyriaWa0Kk_yWnQ==",
     fallbackEmail: "info@grainbroker.com.au",
     phoneDisplay: "0414 503 466"
@@ -193,22 +195,66 @@
       });
   }
 
-  // buy.html: window.gbSubmit(summary, payload, onDone)
-  // onDone(ok, errorMessage?)
+  // Prefer inbound webhook (no Turnstile). Else GHL forms/submit + Turnstile.
   window.gbSubmit = function (summary, payload, onDone) {
     var cfg = window.GB_CONFIG;
     payload = payload || {};
+    function fail(msg) {
+      try { console.error("[GrainBroker buy submit]", msg); } catch (e) {}
+      onDone(false, msg || "Submit failed");
+    }
+    function ok() { onDone(true, null); }
+
+    if (cfg.buyerWebhookUrl) {
+      var body = {
+        email: payload.EMAIL || "",
+        phone: payload.PHONE || "",
+        full_name: payload.CONTACT || "",
+        company: payload.COMPANY || "",
+        needs: buildBuyerNeedsText(payload) || String(summary || ""),
+        commodity: payload.COMMODITY || "",
+        grade: payload.GRADE || "",
+        tonnes: payload.TONNES || "",
+        delivery: payload.DELIVERY || "",
+        window: payload.WINDOW || "",
+        notes: payload.NOTES || "",
+        source: "grainbroker.com.au/buy.html"
+      };
+      fetch(cfg.buyerWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(body)
+      }).then(function (resp) {
+        if (resp.ok || resp.type === "opaque") { ok(); return; }
+        return resp.text().then(function (text) {
+          fail("Webhook HTTP " + resp.status + (text ? (": " + text.slice(0, 180)) : ""));
+        });
+      }).catch(function () {
+        // CORS fallback: GET with query string (Inbound Webhook supports GET)
+        var q = new URLSearchParams();
+        Object.keys(body).forEach(function (k) { if (body[k] != null && body[k] !== "") q.set(k, body[k]); });
+        var url = cfg.buyerWebhookUrl + (cfg.buyerWebhookUrl.indexOf("?") >= 0 ? "&" : "?") + q.toString();
+        fetch(url, { method: "GET", mode: "no-cors", cache: "no-store" })
+          .then(function () { ok(); })
+          .catch(function (err) { fail((err && err.message) || "Webhook network error"); });
+      });
+      return;
+    }
+
     if (!cfg.buyerFormEndpoint || !cfg.buyerGhlFormId || !cfg.buyerGhlLocationId) {
-      onDone(false, "Form not configured");
+      fail("Form not configured");
       return;
     }
 
     getTurnstileToken(cfg.buyerTurnstileSiteKey, function (terr, token, waitedMs) {
       if (terr || !token) {
-        onDone(false, "Security check failed — refresh and try again");
+        fail("Security check failed (" + ((terr && terr.message) || "no token") + ") — refresh and try again");
         return;
       }
-      postBuyerToGhl(summary, payload, token, waitedMs, onDone);
+      postBuyerToGhl(summary, payload, token, waitedMs, function (success, errMsg) {
+        if (success) ok();
+        else fail(errMsg || "GHL submit rejected");
+      });
     });
   };
 
