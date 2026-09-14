@@ -21,7 +21,7 @@
     // GHL's invisible Turnstile site key (from LeadConnector form widget).
     buyerTurnstileSiteKey: "0x4AAAAAACCpVlau-4k7cJ33",
     // Inbound webhook backup (no Turnstile). Set when workflow is live.
-    buyerWebhookUrl: "",
+    buyerWebhookUrl: "https://services.leadconnectorhq.com/hooks/DJQBTIQasTdt54iPJuny/webhook-trigger/2047b95d-2adf-4771-95ee-34455f7c1fb1",
     buyerCheckFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAF4JSYeF1sh00OXN8UCwc5-V_9Gl-KVslk6Bmds0o6XTDv8CU5p_zwNTYeUxoSco4CtYM5mCoXR5SSCDCCZ4NGhZpNCQ8ZTjmRTGpT3YMgv94WgN4CDnsUq7dWKkKoHMf0-ShJ6tlaOs9XuyWuG5BRJu4gqSdT_5rFeewo0pLa_CUeOmK2UGS2kSKMB8_HhJyriaWa0Kk_yWnQ==",
     fallbackEmail: "info@grainbroker.com.au",
     phoneDisplay: "0414 503 466"
