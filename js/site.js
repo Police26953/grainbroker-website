@@ -13,14 +13,17 @@
   window.GB_CONFIG = {
     // Brevo form endpoints. Grower registrations land in list "Grain Broker - Growers".
     growerFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAMfu_AcTTe7m14k051CEuPO2NEdtOU5ClzRMZhbtZTtChqxlbCjTtgoIvv2r5KxUKCafKCDq_ndI9zOSpHHIZubMceSsaurG1SmXkkNUdQygbD_IJpuGwGddw38keZ_0RGLdjacFA8VSIzI-yZm9ytJdRlxzJuFCCIHQPxmbZQDdzyPmePPwXaiGOM9Ffx6q34pbmFSpvvJOYg==",
-    // Buyer form endpoint pending (buyers list form not created yet) — falls back to email.
-    buyerFormEndpoint: "",
+    // Buyer intake (buy.html) posts to Grain Broker GHL form "Buyer Needs"
+    // (ydhWyeSBO8IfFxYPCQRS) so Form submitted → Buyer Needs Tag → buyer-needs.
+    buyerFormEndpoint: "https://backend.leadconnectorhq.com/forms/submit",
+    buyerGhlFormId: "ydhWyeSBO8IfFxYPCQRS",
+    buyerGhlLocationId: "DJQBTIQasTdt54iPJuny",
     // Daily buyer market-check endpoint. Pending: Jack needs to create a Brevo subscription
     // form on list #3 "Grain Broker - Buyers" (update existing contacts, fields EMAIL +
     // custom attribute BUYER_DEMAND) and paste the resulting sibforms serve URL in here.
     buyerCheckFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAF4JSYeF1sh00OXN8UCwc5-V_9Gl-KVslk6Bmds0o6XTDv8CU5p_zwNTYeUxoSco4CtYM5mCoXR5SSCDCCZ4NGhZpNCQ8ZTjmRTGpT3YMgv94WgN4CDnsUq7dWKkKoHMf0-ShJ6tlaOs9XuyWuG5BRJu4gqSdT_5rFeewo0pLa_CUeOmK2UGS2kSKMB8_HhJyriaWa0Kk_yWnQ==",
     fallbackEmail: "info@grainbroker.com.au",
-    phoneDisplay: "0414 503 466"
+    phoneDisplay: "0414 054 0366"
   };
 
   // Convert an Australian phone number to Brevo SMS format (61XXXXXXXXX, no +/leading 0).
@@ -32,6 +35,84 @@
     if (d.length === 9) return "61" + d;
     return "";
   }
+
+  function localTimezoneLabel() {
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Australia/Sydney";
+      var offsetMin = -new Date().getTimezoneOffset();
+      var sign = offsetMin >= 0 ? "+" : "-";
+      var abs = Math.abs(offsetMin);
+      var hh = String(Math.floor(abs / 60)).padStart(2, "0");
+      var mm = String(abs % 60).padStart(2, "0");
+      return tz + " (GMT" + sign + hh + ":" + mm + ")";
+    } catch (e) {
+      return "Australia/Sydney (GMT+10:00)";
+    }
+  }
+
+  function buildBuyerNeedsText(payload) {
+    var parts = [];
+    if (payload.COMMODITY) parts.push("Commodity: " + payload.COMMODITY);
+    if (payload.GRADE) parts.push("Grade: " + payload.GRADE);
+    if (payload.TONNES) parts.push("Tonnes: " + payload.TONNES);
+    if (payload.DELIVERY) parts.push("Delivery: " + payload.DELIVERY);
+    if (payload.WINDOW) parts.push("Window: " + payload.WINDOW);
+    if (payload.NOTES) parts.push("Notes: " + payload.NOTES);
+    if (payload.TYPE) parts.push("(" + payload.TYPE + ")");
+    return parts.join("\n");
+  }
+
+  // buy.html: window.gbSubmit(summary, payload, onDone)
+  // Posts into Grain Broker SA Buyer Needs form so contact + buyer-needs tag land in GHL.
+  window.gbSubmit = function (summary, payload, onDone) {
+    var cfg = window.GB_CONFIG;
+    payload = payload || {};
+    if (!cfg.buyerFormEndpoint || !cfg.buyerGhlFormId || !cfg.buyerGhlLocationId) {
+      onDone(false);
+      return;
+    }
+
+    var fields = {
+      full_name: payload.CONTACT || "",
+      phone: payload.PHONE || "",
+      email: payload.EMAIL || "",
+      organization: payload.COMPANY || "",
+      TqNpd1TFkhE487lGHVBV: buildBuyerNeedsText(payload) || String(summary || ""),
+      wo9aHn3xzJsYVwFykxy1: "",
+      Timezone: localTimezoneLabel()
+    };
+
+    var body = new FormData();
+    body.append("formData", JSON.stringify(fields));
+    body.append("locationId", cfg.buyerGhlLocationId);
+    body.append("formId", cfg.buyerGhlFormId);
+
+    var headers = {};
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz) headers.timezone = tz;
+    } catch (e) {}
+
+    var url = cfg.buyerFormEndpoint
+      + "?formId=" + encodeURIComponent(cfg.buyerGhlFormId)
+      + "&locationId=" + encodeURIComponent(cfg.buyerGhlLocationId);
+
+    fetch(url, { method: "POST", body: body, headers: headers })
+      .then(function (resp) {
+        if (!resp.ok) {
+          onDone(false);
+          return;
+        }
+        return resp.json().then(function (data) {
+          // GHL returns { status: true/false, ... } on success path
+          onDone(!!(data && (data.status === true || data.success === true || data.id || data.contactId)));
+        }).catch(function () {
+          // Some responses are empty 200 — treat HTTP ok as success
+          onDone(true);
+        });
+      })
+      .catch(function () { onDone(false); });
+  };
 
   // Submit a grower registration to Brevo: contact fields + full parcel summary.
   // fields: { name, email, phone, parcelDetails }
