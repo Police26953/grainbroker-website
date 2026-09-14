@@ -14,19 +14,17 @@
     // Brevo form endpoints. Grower registrations land in list "Grain Broker - Growers".
     growerFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAMfu_AcTTe7m14k051CEuPO2NEdtOU5ClzRMZhbtZTtChqxlbCjTtgoIvv2r5KxUKCafKCDq_ndI9zOSpHHIZubMceSsaurG1SmXkkNUdQygbD_IJpuGwGddw38keZ_0RGLdjacFA8VSIzI-yZm9ytJdRlxzJuFCCIHQPxmbZQDdzyPmePPwXaiGOM9Ffx6q34pbmFSpvvJOYg==",
     // Buyer intake (buy.html) posts to Grain Broker GHL form "Buyer Needs"
-    // (ydhWyeSBO8IfFxYPCQRS) so Form submitted → Buyer Needs Tag → buyer-needs.
+    // (ydhWyeSBO8IfFxYPCQRS). Public submit requires Cloudflare Turnstile token.
     buyerFormEndpoint: "https://backend.leadconnectorhq.com/forms/submit",
     buyerGhlFormId: "ydhWyeSBO8IfFxYPCQRS",
     buyerGhlLocationId: "DJQBTIQasTdt54iPJuny",
-    // Daily buyer market-check endpoint. Pending: Jack needs to create a Brevo subscription
-    // form on list #3 "Grain Broker - Buyers" (update existing contacts, fields EMAIL +
-    // custom attribute BUYER_DEMAND) and paste the resulting sibforms serve URL in here.
+    // GHL's invisible Turnstile site key (from LeadConnector form widget).
+    buyerTurnstileSiteKey: "0x4AAAAAACCpVlau-4k7cJ33",
     buyerCheckFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAF4JSYeF1sh00OXN8UCwc5-V_9Gl-KVslk6Bmds0o6XTDv8CU5p_zwNTYeUxoSco4CtYM5mCoXR5SSCDCCZ4NGhZpNCQ8ZTjmRTGpT3YMgv94WgN4CDnsUq7dWKkKoHMf0-ShJ6tlaOs9XuyWuG5BRJu4gqSdT_5rFeewo0pLa_CUeOmK2UGS2kSKMB8_HhJyriaWa0Kk_yWnQ==",
     fallbackEmail: "info@grainbroker.com.au",
     phoneDisplay: "0414 503 466"
   };
 
-  // Convert an Australian phone number to Brevo SMS format (61XXXXXXXXX, no +/leading 0).
   function auPhone(raw) {
     var d = (raw || "").replace(/\D/g, "");
     if (!d) return "";
@@ -62,16 +60,86 @@
     return parts.join("\n");
   }
 
-  // buy.html: window.gbSubmit(summary, payload, onDone)
-  // Posts into Grain Broker SA Buyer Needs form so contact + buyer-needs tag land in GHL.
-  window.gbSubmit = function (summary, payload, onDone) {
-    var cfg = window.GB_CONFIG;
-    payload = payload || {};
-    if (!cfg.buyerFormEndpoint || !cfg.buyerGhlFormId || !cfg.buyerGhlLocationId) {
-      onDone(false);
+  function loadTurnstileApi(done) {
+    if (window.turnstile && typeof window.turnstile.render === "function") {
+      done(null);
       return;
     }
+    var existing = document.querySelector("script[data-gb-turnstile]");
+    if (existing) {
+      existing.addEventListener("load", function () { done(null); });
+      existing.addEventListener("error", function () { done(new Error("turnstile-script")); });
+      return;
+    }
+    var s = document.createElement("script");
+    s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    s.async = true;
+    s.dataset.gbTurnstile = "1";
+    s.onload = function () { done(null); };
+    s.onerror = function () { done(new Error("turnstile-script")); };
+    document.head.appendChild(s);
+  }
 
+  // Obtain an invisible Turnstile token (required by GHL public forms/submit).
+  function getTurnstileToken(siteKey, done) {
+    if (!siteKey) {
+      done(new Error("missing-sitekey"), null, 0);
+      return;
+    }
+    var started = Date.now();
+    loadTurnstileApi(function (err) {
+      if (err) {
+        done(err, null, Date.now() - started);
+        return;
+      }
+      try {
+        var host = document.getElementById("gb-turnstile-host");
+        if (!host) {
+          host = document.createElement("div");
+          host.id = "gb-turnstile-host";
+          host.style.cssText = "position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;";
+          document.body.appendChild(host);
+        }
+        host.innerHTML = "";
+        var finished = false;
+        var widgetId = window.turnstile.render(host, {
+          sitekey: siteKey,
+          size: "invisible",
+          callback: function (token) {
+            if (finished) return;
+            finished = true;
+            done(null, token, Date.now() - started);
+          },
+          "error-callback": function () {
+            if (finished) return;
+            finished = true;
+            done(new Error("turnstile-error"), null, Date.now() - started);
+          },
+          "expired-callback": function () {
+            if (finished) return;
+            finished = true;
+            done(new Error("turnstile-expired"), null, Date.now() - started);
+          }
+        });
+        // Invisible widgets usually auto-run; execute is safe if supported.
+        try {
+          if (typeof window.turnstile.execute === "function") {
+            window.turnstile.execute(widgetId);
+          }
+        } catch (e2) {}
+        setTimeout(function () {
+          if (finished) return;
+          finished = true;
+          done(new Error("turnstile-timeout"), null, Date.now() - started);
+        }, 15000);
+      } catch (e) {
+        done(e, null, Date.now() - started);
+      }
+    });
+  }
+
+  function postBuyerToGhl(summary, payload, token, waitedMs, onDone) {
+    var cfg = window.GB_CONFIG;
     var fields = {
       full_name: payload.CONTACT || "",
       phone: payload.PHONE || "",
@@ -86,12 +154,17 @@
     body.append("formData", JSON.stringify(fields));
     body.append("locationId", cfg.buyerGhlLocationId);
     body.append("formId", cfg.buyerGhlFormId);
+    if (token) body.append("turnstileNonInteractiveToken", token);
 
     var headers = {};
     try {
       var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
       if (tz) headers.timezone = tz;
     } catch (e) {}
+    if (typeof waitedMs === "number") {
+      headers["x-turnstile-submit-delay-ms"] = String(waitedMs);
+      headers["x-turnstile-non-interactive-wait-ms"] = String(waitedMs);
+    }
 
     var url = cfg.buyerFormEndpoint
       + "?formId=" + encodeURIComponent(cfg.buyerGhlFormId)
@@ -99,23 +172,46 @@
 
     fetch(url, { method: "POST", body: body, headers: headers })
       .then(function (resp) {
-        if (!resp.ok) {
-          onDone(false);
-          return;
-        }
-        return resp.json().then(function (data) {
-          // GHL returns { status: true/false, ... } on success path
-          onDone(!!(data && (data.status === true || data.success === true || data.id || data.contactId)));
-        }).catch(function () {
-          // Some responses are empty 200 — treat HTTP ok as success
-          onDone(true);
+        return resp.text().then(function (text) {
+          var data = null;
+          try { data = text ? JSON.parse(text) : null; } catch (e) {}
+          if (!resp.ok) {
+            var msg = (data && (data.message || data.error || data.statusMessage)) || ("HTTP " + resp.status);
+            var codes = data && data.errorCodes ? " [" + data.errorCodes.join(",") + "]" : "";
+            onDone(false, msg + codes);
+            return;
+          }
+          // Accept typical GHL success shapes; also bare 200.
+          var ok = !data || data.status === true || data.success === true || data.id || data.contactId || data.status === "ok";
+          // Some responses use { status: false, message }
+          if (data && data.status === false) ok = false;
+          onDone(!!ok, ok ? null : ((data && data.message) || "Submit rejected"));
         });
       })
-      .catch(function () { onDone(false); });
+      .catch(function (err) {
+        onDone(false, (err && err.message) || "Network error");
+      });
+  }
+
+  // buy.html: window.gbSubmit(summary, payload, onDone)
+  // onDone(ok, errorMessage?)
+  window.gbSubmit = function (summary, payload, onDone) {
+    var cfg = window.GB_CONFIG;
+    payload = payload || {};
+    if (!cfg.buyerFormEndpoint || !cfg.buyerGhlFormId || !cfg.buyerGhlLocationId) {
+      onDone(false, "Form not configured");
+      return;
+    }
+
+    getTurnstileToken(cfg.buyerTurnstileSiteKey, function (terr, token, waitedMs) {
+      if (terr || !token) {
+        onDone(false, "Security check failed — refresh and try again");
+        return;
+      }
+      postBuyerToGhl(summary, payload, token, waitedMs, onDone);
+    });
   };
 
-  // Submit a grower registration to Brevo: contact fields + full parcel summary.
-  // fields: { name, email, phone, parcelDetails }
   window.gbSubmitGrower = function (fields, onDone) {
     var cfg = window.GB_CONFIG;
     if (!cfg.growerFormEndpoint) { onDone(false); return; }
@@ -125,11 +221,9 @@
     data.append("SMS", auPhone(fields.phone));
     data.append("FIRSTNAME", fields.name || "");
     data.append("PARCEL_DETAILS", fields.parcelDetails || "");
-    data.append("email_address_check", ""); // honeypot: must stay empty
+    data.append("email_address_check", "");
     data.append("locale", "en");
 
-    // Brevo's /serve/ endpoint 302s to /v2/serve/; posting straight to the
-    // resolved URL avoids browsers dropping the POST body on that redirect.
     var endpoint = cfg.growerFormEndpoint.replace("/serve/", "/v2/serve/");
 
     fetch(endpoint, { method: "POST", body: data })
@@ -137,9 +231,6 @@
       .catch(function () { onDone(false); });
   };
 
-  // Submit a daily buyer market-check response to Brevo: updates the existing buyer
-  // contact's BUYER_DEMAND attribute. Does not create new contacts — buyer must already
-  // be on the Buyers list. fields: { email, demand }
   window.gbSubmitBuyerCheck = function (fields, onDone) {
     var cfg = window.GB_CONFIG;
     if (!cfg.buyerCheckFormEndpoint) { onDone(false); return; }
@@ -147,7 +238,7 @@
     var data = new FormData();
     data.append("EMAIL", fields.email || "");
     data.append("BUYER_DEMAND", fields.demand || "");
-    data.append("email_address_check", ""); // honeypot: must stay empty
+    data.append("email_address_check", "");
     data.append("locale", "en");
 
     var endpoint = cfg.buyerCheckFormEndpoint.replace("/serve/", "/v2/serve/");

@@ -129,11 +129,12 @@
     var btn = document.getElementById("submit");
     btn.disabled = true;
     btn.textContent = "Sending…";
-    window.gbSubmit("Buyer requirement: " + payload.TONNES + "t " + payload.COMMODITY + ", " + payload.COMPANY, payload, function (ok) {
+    window.gbSubmit("Buyer requirement: " + payload.TONNES + "t " + payload.COMMODITY + ", " + payload.COMPANY, payload, function (ok, errMsg) {
       if (!ok) {
         btn.disabled = false;
         btn.textContent = "Register requirements";
-        alert("Something went wrong sending your requirements — call us on 0414 503 466 or try again.");
+        var detail = errMsg ? (" (" + errMsg + ")") : "";
+        alert("Something went wrong sending your requirements" + detail + " — call us on 0414 503 466 or try again.");
         return;
       }
       document.getElementById("buyform").querySelectorAll(".grid-2,.grid-3,.field,#submit").forEach(function (el) { el.hidden = true; });
