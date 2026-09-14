@@ -23,7 +23,7 @@
     // custom attribute BUYER_DEMAND) and paste the resulting sibforms serve URL in here.
     buyerCheckFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAF4JSYeF1sh00OXN8UCwc5-V_9Gl-KVslk6Bmds0o6XTDv8CU5p_zwNTYeUxoSco4CtYM5mCoXR5SSCDCCZ4NGhZpNCQ8ZTjmRTGpT3YMgv94WgN4CDnsUq7dWKkKoHMf0-ShJ6tlaOs9XuyWuG5BRJu4gqSdT_5rFeewo0pLa_CUeOmK2UGS2kSKMB8_HhJyriaWa0Kk_yWnQ==",
     fallbackEmail: "info@grainbroker.com.au",
-    phoneDisplay: "0414 054 0366"
+    phoneDisplay: "0414 503 466"
   };
 
   // Convert an Australian phone number to Brevo SMS format (61XXXXXXXXX, no +/leading 0).
