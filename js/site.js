@@ -12,7 +12,7 @@
 
   window.GB_CONFIG = {
     // Brevo form endpoints. Grower registrations land in list "Grain Broker - Growers".
-    growerFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAMfu_AcTTe7m14k051CEuPO2NEdtOU5ClzRMZhbtZTtChqxlbCjTtgoIvv2r5KxUKCafKCDq_ndI9zOSpHHIZubMceSsaurG1SmXkkNUdQygbD_IJpuGwGddw38keZ_0RGLdjacFA8VSIzI-yZm9ytJdRlxzJuFCCIHQPxmbZQDdzyPmePPwXaiGOM9Ffx6q34pbmFSpvvJOYg==",
+    growerFormEndpoint: "", // was Brevo sibforms; sell → GHL via buyerIntakeUrl
     // Buyer intake (buy.html) posts to Grain Broker GHL form "Buyer Needs"
     // (ydhWyeSBO8IfFxYPCQRS). Public submit requires Cloudflare Turnstile token.
     buyerFormEndpoint: "https://backend.leadconnectorhq.com/forms/submit",
@@ -21,7 +21,8 @@
     // GHL's invisible Turnstile site key (from LeadConnector form widget).
     buyerTurnstileSiteKey: "0x4AAAAAACCpVlau-4k7cJ33",
     // Inbound webhook backup (no Turnstile). Set when workflow is live.
-    buyerWebhookUrl: "https://services.leadconnectorhq.com/hooks/DJQBTIQasTdt54iPJuny/webhook-trigger/2047b95d-2adf-4771-95ee-34455f7c1fb1",
+    buyerIntakeUrl: "https://gentle-integrating-commitment-riverside.trycloudflare.com", // Cloudflare Worker: upsert+tag (set after deploy)
+    buyerWebhookUrl: "", // abandoned — GHL stays in test-capture mode
     buyerCheckFormEndpoint: "https://4e07af79.sibforms.com/serve/MUIFAF4JSYeF1sh00OXN8UCwc5-V_9Gl-KVslk6Bmds0o6XTDv8CU5p_zwNTYeUxoSco4CtYM5mCoXR5SSCDCCZ4NGhZpNCQ8ZTjmRTGpT3YMgv94WgN4CDnsUq7dWKkKoHMf0-ShJ6tlaOs9XuyWuG5BRJu4gqSdT_5rFeewo0pLa_CUeOmK2UGS2kSKMB8_HhJyriaWa0Kk_yWnQ==",
     fallbackEmail: "info@grainbroker.com.au",
     phoneDisplay: "0414 503 466"
@@ -195,7 +196,8 @@
       });
   }
 
-  // Prefer inbound webhook (no Turnstile). Else GHL forms/submit + Turnstile.
+  // Prefer Cloudflare Worker intake (upsert + buyer-needs). Broken GHL inbound webhook disabled.
+  // Do not use forms/submit from this domain — Turnstile site key is hostname-bound to GHL.
   window.gbSubmit = function (summary, payload, onDone) {
     var cfg = window.GB_CONFIG;
     payload = payload || {};
@@ -205,75 +207,69 @@
     }
     function ok() { onDone(true, null); }
 
-    if (cfg.buyerWebhookUrl) {
+    if (cfg.buyerIntakeUrl) {
       var body = {
-        email: payload.EMAIL || "",
-        phone: payload.PHONE || "",
-        full_name: payload.CONTACT || "",
-        company: payload.COMPANY || "",
+        type: "buyer",
+        EMAIL: payload.EMAIL || "",
+        PHONE: payload.PHONE || "",
+        CONTACT: payload.CONTACT || "",
+        COMPANY: payload.COMPANY || "",
+        COMMODITY: payload.COMMODITY || "",
+        GRADE: payload.GRADE || "",
+        TONNES: payload.TONNES || "",
+        DELIVERY: payload.DELIVERY || "",
+        WINDOW: payload.WINDOW || "",
+        NOTES: payload.NOTES || "",
+        TYPE: payload.TYPE || "",
         needs: buildBuyerNeedsText(payload) || String(summary || ""),
-        commodity: payload.COMMODITY || "",
-        grade: payload.GRADE || "",
-        tonnes: payload.TONNES || "",
-        delivery: payload.DELIVERY || "",
-        window: payload.WINDOW || "",
-        notes: payload.NOTES || "",
         source: "grainbroker.com.au/buy.html"
       };
-      fetch(cfg.buyerWebhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(body)
-      }).then(function (resp) {
-        if (resp.ok || resp.type === "opaque") { ok(); return; }
-        return resp.text().then(function (text) {
-          fail("Webhook HTTP " + resp.status + (text ? (": " + text.slice(0, 180)) : ""));
-        });
-      }).catch(function () {
-        // CORS fallback: GET with query string (Inbound Webhook supports GET)
-        var q = new URLSearchParams();
-        Object.keys(body).forEach(function (k) { if (body[k] != null && body[k] !== "") q.set(k, body[k]); });
-        var url = cfg.buyerWebhookUrl + (cfg.buyerWebhookUrl.indexOf("?") >= 0 ? "&" : "?") + q.toString();
-        fetch(url, { method: "GET", mode: "no-cors", cache: "no-store" })
-          .then(function () { ok(); })
-          .catch(function (err) { fail((err && err.message) || "Webhook network error"); });
-      });
+      var headers = { "Content-Type": "application/json", "Accept": "application/json" };
+      if (cfg.buyerIntakeSecret) headers["X-GrainBroker-Intake"] = cfg.buyerIntakeSecret;
+      fetch(cfg.buyerIntakeUrl, { method: "POST", headers: headers, body: JSON.stringify(body) })
+        .then(function (resp) {
+          return resp.text().then(function (text) {
+            var data = null;
+            try { data = text ? JSON.parse(text) : null; } catch (e) {}
+            if (!resp.ok || !(data && data.ok)) {
+              fail((data && data.error) || ("Intake HTTP " + resp.status));
+              return;
+            }
+            ok();
+          });
+        })
+        .catch(function (err) { fail((err && err.message) || "Intake network error"); });
       return;
     }
 
-    if (!cfg.buyerFormEndpoint || !cfg.buyerGhlFormId || !cfg.buyerGhlLocationId) {
-      fail("Form not configured");
-      return;
-    }
-
-    getTurnstileToken(cfg.buyerTurnstileSiteKey, function (terr, token, waitedMs) {
-      if (terr || !token) {
-        fail("Security check failed (" + ((terr && terr.message) || "no token") + ") — refresh and try again");
-        return;
-      }
-      postBuyerToGhl(summary, payload, token, waitedMs, function (success, errMsg) {
-        if (success) ok();
-        else fail(errMsg || "GHL submit rejected");
-      });
-    });
+    fail("Buyer intake not configured — call 0414 503 466");
   };
 
   window.gbSubmitGrower = function (fields, onDone) {
     var cfg = window.GB_CONFIG;
-    if (!cfg.growerFormEndpoint) { onDone(false); return; }
-
-    var data = new FormData();
-    data.append("EMAIL", fields.email || "");
-    data.append("SMS", auPhone(fields.phone));
-    data.append("FIRSTNAME", fields.name || "");
-    data.append("PARCEL_DETAILS", fields.parcelDetails || "");
-    data.append("email_address_check", "");
-    data.append("locale", "en");
-
-    var endpoint = cfg.growerFormEndpoint.replace("/serve/", "/v2/serve/");
-
-    fetch(endpoint, { method: "POST", body: data })
-      .then(function (resp) { onDone(resp.ok); })
+    if (!cfg.buyerIntakeUrl) {
+      try { console.error("[GrainBroker sell submit] intake not configured"); } catch (e) {}
+      onDone(false);
+      return;
+    }
+    var body = {
+      type: "grower",
+      name: fields.name || "",
+      email: fields.email || "",
+      phone: fields.phone || "",
+      parcelDetails: fields.parcelDetails || "",
+      source: "grainbroker.com.au/sell.html"
+    };
+    var headers = { "Content-Type": "application/json", "Accept": "application/json" };
+    if (cfg.buyerIntakeSecret) headers["X-GrainBroker-Intake"] = cfg.buyerIntakeSecret;
+    fetch(cfg.buyerIntakeUrl, { method: "POST", headers: headers, body: JSON.stringify(body) })
+      .then(function (resp) {
+        return resp.text().then(function (text) {
+          var data = null;
+          try { data = text ? JSON.parse(text) : null; } catch (e) {}
+          onDone(!!(resp.ok && data && data.ok));
+        });
+      })
       .catch(function () { onDone(false); });
   };
 
