@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8"><meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yes — I can supply. GrainBroker.</title>
+<meta name="description" content="Confirm your interest in supplying a buyer need. GrainBroker will call you to match the parcel.">
+<link rel="icon" type="image/png" href="assets/grainbroker-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="form-shell">
+
+<header>
+  <div class="container">
+    <nav aria-label="Main">
+      <a class="logo" href="index.html">
+        <img src="assets/grainbroker-icon.png" alt="">
+        <span>Grain<b>Broker</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="sell.html">Sell grain</a></li>
+        <li><a href="buy.html">Buy grain</a></li>
+        <li><a href="prices.html">Prices</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="nav-cta" href="tel:+61414503466">0414 503 466</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <form class="form-card" id="yesform" novalidate>
+    <h1>TEST ONLY — confirm interest</h1>
+    <p class="lede">Confirm your details and a GrainBroker broker will call you about this buyer need. Phone <a href="tel:+61414503466" style="color:var(--orange);font-weight:700;text-decoration:none">0414 503 466</a> if you’d rather talk now.</p>
+
+    <div class="review-box" id="need-card" style="background:#1B2A00;color:#fff;margin-bottom:28px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#F57C00;margin-bottom:8px">Buyer looking to source</div>
+      <div id="need-title" style="font-size:1.15rem;font-weight:700;margin-bottom:12px"></div>
+      <div id="need-lines" style="font-size:14.5px;line-height:1.85;color:#E8EDE0"></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" autocomplete="name">
+        <p class="err">We need a name for the call.</p>
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" autocomplete="tel" placeholder="04XX XXX XXX" required>
+        <p class="err">Enter the best number to reach you.</p>
+      </div>
+      <div class="field">
+        <label for="postcode">Postcode</label>
+        <input id="postcode" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 5372" required>
+        <p class="err">Enter your postcode.</p>
+      </div>
+      <div class="field">
+        <label for="email">Email (optional)</label>
+        <input id="email" type="email" autocomplete="email">
+        <p class="err">Enter a valid email address.</p>
+      </div>
+    </div>
+
+    <input type="hidden" id="contactId" value="">
+    <input type="hidden" id="commodity" value="">
+    <input type="hidden" id="grade" value="">
+    <input type="hidden" id="tonnes" value="">
+    <input type="hidden" id="delivery" value="">
+    <input type="hidden" id="window" value="">
+    <input type="hidden" id="need" value="">
+
+    <button type="button" class="btn-register" id="submit" style="width:100%;justify-content:center;margin-top:8px">Yes — confirm interest</button>
+
+    <div class="success-panel" id="done" hidden>
+      <div class="ok">&#10003;</div>
+      <h2 style="font-size:1.4rem;margin-bottom:10px">Thanks — we’re on it</h2>
+      <p style="color:var(--grey);max-width:30em;margin:0 auto">A GrainBroker broker will call you shortly about this buyer need. Or call Jack on <a href="tel:+61414503466" style="color:var(--orange);font-weight:700;text-decoration:none">0414 503 466</a>.</p>
+    </div>
+  </form>
+</div>
+
+<script src="js/intake-test.js?v=20260916intake1"></script>
+<script>
+(function () {
+  function qp(keys) {
+    var p = new URLSearchParams(window.location.search);
+    for (var i = 0; i < keys.length; i++) {
+      var v = p.get(keys[i]);
+      if (v != null && String(v).trim() !== "") return String(v).trim();
+    }
+    return "";
+  }
+
+  var name = qp(["name", "first", "fn"]);
+  var email = qp(["email"]);
+  var contactId = qp(["id", "contactId"]);
+  var commodity = qp(["commodity"]);
+  var grade = qp(["grade"]);
+  var tonnes = qp(["tonnes"]);
+  var delivery = qp(["delivery"]);
+  var windowVal = qp(["window"]);
+  if (!commodity || !grade || !tonnes || !delivery || !windowVal) {
+    document.getElementById("need-title").textContent = "This link is missing buyer-need details";
+    document.getElementById("need-lines").textContent = "Please use the full link in your GrainBroker message, or call Jack on 0414 503 466.";
+    document.getElementById("yesform").querySelectorAll(".grid-2,#submit,.lede").forEach(function (el) {
+      el.hidden = true;
+    });
+    document.getElementById("submit").disabled = true;
+    return;
+  }
+  var need = qp(["need"]);
+  if (!need) {
+    need = commodity + " / " + grade + " / " + tonnes + " t / " + delivery + " / " + windowVal;
+  }
+
+  document.getElementById("name").value = name;
+  document.getElementById("email").value = email;
+  document.getElementById("contactId").value = contactId;
+  document.getElementById("commodity").value = commodity;
+  document.getElementById("grade").value = grade;
+  document.getElementById("tonnes").value = tonnes;
+  document.getElementById("delivery").value = delivery;
+  document.getElementById("window").value = windowVal;
+  document.getElementById("need").value = need;
+
+  var tonnesLabel = /t\b/i.test(String(tonnes)) ? String(tonnes) : (String(tonnes) + " t");
+  document.getElementById("need-title").textContent = commodity + " — " + tonnesLabel;
+  [["Commodity", commodity], ["Grade", grade], ["Tonnes", tonnesLabel],
+   ["Delivery", delivery], ["Window", windowVal]].forEach(function (item) {
+    var row = document.createElement("div");
+    var label = document.createElement("strong");
+    label.style.color = "#F57C00";
+    label.textContent = item[0];
+    row.appendChild(label);
+    row.appendChild(document.createTextNode(" " + item[1]));
+    document.getElementById("need-lines").appendChild(row);
+  });
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+  function invalid(id, bad) {
+    var f = document.getElementById(id).closest(".field");
+    f.classList.toggle("invalid", bad);
+    return bad;
+  }
+
+  document.getElementById("submit").addEventListener("click", function () {
+    var a = invalid("name", !val("name"));
+    var b = invalid("phone", val("phone").replace(/\D/g, "").length < 8);
+    var pc = val("postcode").replace(/\D/g, "");
+    var c = invalid("postcode", !/^\d{4}$/.test(val("postcode")));
+    var d = invalid("email", !!val("email") && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email")));
+    if (a || b || c || d) return;
+
+    var payload = {
+      name: val("name"),
+      phone: val("phone"),
+      postcode: val("postcode"),
+      email: val("email"),
+      commodity: val("commodity"),
+      grade: val("grade"),
+      tonnes: val("tonnes"),
+      delivery: val("delivery"),
+      window: val("window"),
+      need: val("need"),
+      contactId: val("contactId")
+    };
+
+    var btn = document.getElementById("submit");
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    window.gbSubmitYes(payload, function (ok, errMsg) {
+      if (!ok) {
+        btn.disabled = false;
+        btn.textContent = "Yes — confirm interest";
+        var detail = errMsg ? (" (" + errMsg + ")") : "";
+        alert("Something went wrong confirming your interest" + detail + " — call us on 0414 503 466 or try again.");
+        return;
+      }
+      document.getElementById("yesform").querySelectorAll(".grid-2,.field,#submit,#need-card,.lede").forEach(function (el) {
+        el.hidden = true;
+      });
+      document.getElementById("done").hidden = false;
+      window.scrollTo({ top: 0 });
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
