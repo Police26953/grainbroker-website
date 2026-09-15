@@ -273,6 +273,46 @@
       .catch(function () { onDone(false); });
   };
 
+  window.gbSubmitYes = function (fields, onDone) {
+    var cfg = window.GB_CONFIG;
+    if (!cfg.buyerIntakeUrl) {
+      try { console.error("[GrainBroker yes submit] intake not configured"); } catch (e) {}
+      onDone(false, "intake not configured");
+      return;
+    }
+    var body = {
+      type: "yes",
+      name: fields.name || "",
+      phone: fields.phone || "",
+      postcode: fields.postcode || "",
+      email: fields.email || "",
+      EMAIL: fields.email || "",
+      commodity: fields.commodity || "",
+      grade: fields.grade || "",
+      tonnes: fields.tonnes || "",
+      delivery: fields.delivery || "",
+      window: fields.window || "",
+      need: fields.need || "",
+      contactId: fields.contactId || "",
+      source: "grainbroker.com.au/yes.html"
+    };
+    var headers = { "Content-Type": "application/json", "Accept": "application/json" };
+    if (cfg.buyerIntakeSecret) headers["X-GrainBroker-Intake"] = cfg.buyerIntakeSecret;
+    fetch(cfg.buyerIntakeUrl, { method: "POST", headers: headers, body: JSON.stringify(body) })
+      .then(function (resp) {
+        return resp.text().then(function (text) {
+          var data = null;
+          try { data = text ? JSON.parse(text) : null; } catch (e) {}
+          if (!resp.ok || !(data && data.ok)) {
+            onDone(false, (data && data.error) || ("Intake HTTP " + resp.status));
+            return;
+          }
+          onDone(true, null);
+        });
+      })
+      .catch(function (err) { onDone(false, (err && err.message) || "Intake network error"); });
+  };
+
   window.gbSubmitBuyerCheck = function (fields, onDone) {
     var cfg = window.GB_CONFIG;
     if (!cfg.buyerCheckFormEndpoint) { onDone(false); return; }

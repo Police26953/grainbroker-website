@@ -10,7 +10,7 @@ question. This file only covers how the website itself works.
 
 Live source of truth: `grainbroker-site/` (static HTML/CSS/JS, edit here
 first). Pages: `index.html`, `sell.html` (grower wizard), `buy.html` (buyer
-intake — **has a known live bug**, see below), `check.html` (buyer quick
+intake), `yes.html` (grower YES to buyer-need email CTA), `check.html` (buyer quick
 market-check), `prices.html`, `news.html`, `about.html`. Data files
 `data/news.js` and `data/prices.js` feed the site.
 
@@ -152,8 +152,19 @@ anything that becomes publicly visible on the live site.
 ### Fix (long-term)
 - Branded buy + sell UX kept (Montserrat, orange/green, phone **0414 503 466** only).
 - Thin intake proxy (Cloudflare Worker `grainbroker-buy-api`, code in `/workspace/grainbroker-buy-api`) uses Grain Broker Private Integration (contacts.readonly + contacts.write). Token file: `grainbroker-site-meta/.ghl-grainbroker-pit` (never in client JS).
-- POST `{type:"buyer"|"grower", ...}` → upsert contact in `DJQBTIQasTdt54iPJuny` + tag `buyer-needs` / `grower-interested` + note.
-- `js/site.js`: `buyerIntakeUrl` drives `gbSubmit` and `gbSubmitGrower`. Broken webhook URL cleared. Brevo grower endpoint cleared.
+- POST `{type:"buyer"|"grower"|"yes", ...}` → upsert contact in `DJQBTIQasTdt54iPJuny` + tag `buyer-needs` / `grower-interested` + note.
+- `js/site.js`: `buyerIntakeUrl` drives `gbSubmit`, `gbSubmitGrower`, and `gbSubmitYes`. Broken webhook URL cleared. Brevo grower endpoint cleared.
+
+
+### yes.html (grower YES path, 15 Sep 2026)
+- Landing page for buyer-need grower-alert email CTA. Prefills need from query
+  (`commodity`, `grade`, `tonnes`, `delivery`, `window`, `name`/`first`/`fn`,
+  hidden `email`, optional `id`/`contactId`). Defaults: Canola/CANG/400t/Tununda SA/Next week.
+- Form: name + required phone + required postcode; email hidden from query.
+- `js/site.js` → `gbSubmitYes` POSTs `{type:"yes"}` (alias `grower-yes`) to
+  `buyerIntakeUrl` → upsert contact + tag `grower-interested` + note
+  `YES to buyer need: …`. postalCode on upsert when GHL accepts it; also in note.
+- Phone on page/email: **0414 503 466** only (`tel:+61414503466`).
 
 ### Status
 - PIT + upsert/tag proven in Grain Broker SA.
