@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
+<style>[hidden] { display: none !important; }</style>
 </head>
 <body class="form-shell">
 
@@ -60,9 +61,13 @@
         <input id="postcode" inputmode="numeric" autocomplete="postal-code" placeholder="e.g. 5372" required>
         <p class="err">Enter your postcode.</p>
       </div>
+      <div class="field">
+        <label for="email">Email (optional)</label>
+        <input id="email" type="email" autocomplete="email">
+        <p class="err">Enter a valid email address.</p>
+      </div>
     </div>
 
-    <input type="hidden" id="email" value="">
     <input type="hidden" id="contactId" value="">
     <input type="hidden" id="commodity" value="">
     <input type="hidden" id="grade" value="">
@@ -81,17 +86,9 @@
   </form>
 </div>
 
-<script src="js/site.js?v=20260915yes"></script>
+<script src="js/site.js?v=20260916intake1"></script>
 <script>
 (function () {
-  var DEFAULTS = {
-    commodity: "Canola",
-    grade: "CANG",
-    tonnes: "400",
-    delivery: "Tununda SA",
-    window: "Next week"
-  };
-
   function qp(keys) {
     var p = new URLSearchParams(window.location.search);
     for (var i = 0; i < keys.length; i++) {
@@ -104,11 +101,20 @@
   var name = qp(["name", "first", "fn"]);
   var email = qp(["email"]);
   var contactId = qp(["id", "contactId"]);
-  var commodity = qp(["commodity"]) || DEFAULTS.commodity;
-  var grade = qp(["grade"]) || DEFAULTS.grade;
-  var tonnes = qp(["tonnes"]) || DEFAULTS.tonnes;
-  var delivery = qp(["delivery"]) || DEFAULTS.delivery;
-  var windowVal = qp(["window"]) || DEFAULTS.window;
+  var commodity = qp(["commodity"]);
+  var grade = qp(["grade"]);
+  var tonnes = qp(["tonnes"]);
+  var delivery = qp(["delivery"]);
+  var windowVal = qp(["window"]);
+  if (!commodity || !grade || !tonnes || !delivery || !windowVal) {
+    document.getElementById("need-title").textContent = "This link is missing buyer-need details";
+    document.getElementById("need-lines").textContent = "Please use the full link in your GrainBroker message, or call Jack on 0414 503 466.";
+    document.getElementById("yesform").querySelectorAll(".grid-2,#submit,.lede").forEach(function (el) {
+      el.hidden = true;
+    });
+    document.getElementById("submit").disabled = true;
+    return;
+  }
   var need = qp(["need"]);
   if (!need) {
     need = commodity + " / " + grade + " / " + tonnes + " t / " + delivery + " / " + windowVal;
@@ -126,12 +132,16 @@
 
   var tonnesLabel = /t\b/i.test(String(tonnes)) ? String(tonnes) : (String(tonnes) + " t");
   document.getElementById("need-title").textContent = commodity + " — " + tonnesLabel;
-  document.getElementById("need-lines").innerHTML =
-    "<div><strong style=\"color:#F57C00\">Commodity</strong>&nbsp; " + commodity + "</div>" +
-    "<div><strong style=\"color:#F57C00\">Grade</strong>&nbsp; " + grade + "</div>" +
-    "<div><strong style=\"color:#F57C00\">Tonnes</strong>&nbsp; " + tonnesLabel + "</div>" +
-    "<div><strong style=\"color:#F57C00\">Delivery</strong>&nbsp; " + delivery + "</div>" +
-    "<div><strong style=\"color:#F57C00\">Window</strong>&nbsp; " + windowVal + "</div>";
+  [["Commodity", commodity], ["Grade", grade], ["Tonnes", tonnesLabel],
+   ["Delivery", delivery], ["Window", windowVal]].forEach(function (item) {
+    var row = document.createElement("div");
+    var label = document.createElement("strong");
+    label.style.color = "#F57C00";
+    label.textContent = item[0];
+    row.appendChild(label);
+    row.appendChild(document.createTextNode(" " + item[1]));
+    document.getElementById("need-lines").appendChild(row);
+  });
 
   function val(id) { return document.getElementById(id).value.trim(); }
   function invalid(id, bad) {
@@ -144,8 +154,9 @@
     var a = invalid("name", !val("name"));
     var b = invalid("phone", val("phone").replace(/\D/g, "").length < 8);
     var pc = val("postcode").replace(/\D/g, "");
-    var c = invalid("postcode", pc.length < 3 || pc.length > 4);
-    if (a || b || c) return;
+    var c = invalid("postcode", !/^\d{4}$/.test(val("postcode")));
+    var d = invalid("email", !!val("email") && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email")));
+    if (a || b || c || d) return;
 
     var payload = {
       name: val("name"),
