@@ -90,9 +90,29 @@
       </div>
     </div>
 
+    <div class="grid-2">
+      <div class="field">
+        <label for="price">Target price ($/t, excluding GST)</label>
+        <input id="price" type="number" min="0.01" step="0.01" inputmode="decimal" required aria-describedby="price-help">
+        <p class="err">Enter a target price greater than zero, with up to two decimal places.</p>
+      </div>
+      <div class="field">
+        <label for="basis">Price basis</label>
+        <select id="basis" required>
+          <option value="">Select price basis</option>
+          <option>Delivered</option><option>Ex-farm</option><option>Track</option><option>FIS</option><option>Other / confirm</option>
+        </select>
+        <p class="err">Select the basis for your target price.</p>
+      </div>
+    </div>
+    <p id="price-help">Your target price is indicative. The buyer and grower must agree the sale directly.</p>
+    <div class="field">
+      <label for="payment">Payment terms (optional)</label>
+      <input id="payment" maxlength="200" placeholder="e.g. 14 days from delivery">
+    </div>
     <div class="field">
       <label for="notes">Anything else</label>
-      <textarea id="notes" rows="3" placeholder="Ongoing program or one-off, quality requirements, payment terms"></textarea>
+      <textarea id="notes" rows="3" placeholder="Ongoing program or one-off, quality requirements, or clarify other price basis"></textarea>
     </div>
 
     <button type="button" class="btn-register" id="submit" style="width:100%;justify-content:center">Register requirements</button>
@@ -105,7 +125,7 @@
   </form>
 </div>
 
-<script src="js/site.js?v=20260915rebuild"></script>
+<script src="js/site.js?v=20260917buyerprice"></script>
 <script>
 (function () {
   function val(id) { return document.getElementById(id).value.trim(); }
@@ -119,12 +139,15 @@
     var b = invalid("contact", !val("contact"));
     var c = invalid("phone", val("phone").replace(/\D/g, "").length < 8);
     var d = invalid("tonnes", !val("tonnes"));
-    if (a || b || c || d) return;
+    var e = invalid("price", !/^\d+(\.\d{1,2})?$/.test(val("price")) || Number(val("price")) <= 0);
+    var f = invalid("basis", !val("basis"));
+    if (a || b || c || d || e || f) return;
     var payload = {
       TYPE: "BUYER REQUIREMENT REGISTRATION",
       COMPANY: val("company"), CONTACT: val("contact"), PHONE: val("phone"), EMAIL: val("email"),
       COMMODITY: val("commodity"), GRADE: val("grade"), TONNES: val("tonnes"),
-      DELIVERY: val("delivery"), WINDOW: val("window"), NOTES: val("notes")
+      DELIVERY: val("delivery"), WINDOW: val("window"), PRICE: val("price"),
+      PRICE_BASIS: val("basis"), PAYMENT_TERMS: val("payment"), NOTES: val("notes")
     };
     var btn = document.getElementById("submit");
     btn.disabled = true;

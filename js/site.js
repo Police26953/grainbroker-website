@@ -41,7 +41,7 @@
   window.gbSubmitYes=function(fields,done){submit(Object.assign({},fields,{type:'yes'}),done);};
   window.gbSubmitGrower=function(fields,done){submit(Object.assign({},fields,{type:'grower'}),done);};
   window.gbSubmit=function(summary,fields,done){
-    var details=['COMMODITY','GRADE','TONNES','DELIVERY','WINDOW','PRICE','NOTES'].filter(function(k){return fields[k];}).map(function(k){return k[0]+k.slice(1).toLowerCase()+': '+fields[k];}).join('\n');
+    var details=['COMMODITY','GRADE','TONNES','DELIVERY','WINDOW','PRICE','PRICE_BASIS','PAYMENT_TERMS','NOTES'].filter(function(k){return fields[k];}).map(function(k){return (k==='PRICE'?'Target price ($/t, excluding GST)':k[0]+k.slice(1).toLowerCase().replace(/_/g,' '))+': '+fields[k];}).join('\n');
     submit(Object.assign({},fields,{type:'buyer',needs:details||summary}),done);
   };
   window.gbSubmitBuyerCheck=function(fields,done){
